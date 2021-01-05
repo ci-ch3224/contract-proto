@@ -1,0 +1,44 @@
+/**
+ * 한 서버에 backend, frontend 같이 배포
+ * backend인 api 모듈이 main
+ * api 모듈 빌드시에 web 빌드의 결과물을 static에 복사한다.
+ * api에서 빌드된 jar는 rootproject의 build 밑에 복사하여 마무리
+ */
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+gradle.projectsEvaluated({
+    ext.npmCommand = 'npm'
+    if (System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows')) {
+        ext.npmCommand = 'npm.cmd'
+    }
+
+    task npmInstall(type: Exec) {
+        workingDir 'web'
+        commandLine  "${npmCommand}"
+        args = ["install"]
+    }
+
+    task buildWeb(type: Exec) {
+        workingDir 'web'
+        commandLine "${npmCommand}"
+        args = ["run", "build"]
+    }
+
+    task copyWebsourcesIntoApi(type: Copy) {
+        from "web/dist"
+        into "api/build/resources/main/static"
+    }
+
+    task copyApiJarIntoRoot(type: Copy) {
+        from "api/build/libs"
+        into "build/libs"
+    }
+
+    buildWeb.dependsOn npmInstall
+    buildWeb.finalizedBy copyWebsourcesIntoApi
+
+    Project apiProj = project(':api')
+    apiProj.tasks.processResources.dependsOn buildWeb
+    apiProj.tasks.build.finalizedBy copyApiJarIntoRoot
+})
