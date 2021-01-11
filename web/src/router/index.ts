@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import Home from '../views/Home.vue'
+import Templates from '../views/Templates.vue'
+import Write from '../views/Write.vue'
+import History from '../views/History.vue'
 
 Vue.use(VueRouter)
 
@@ -9,6 +12,21 @@ const routes: Array<RouteConfig> = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/templates',
+    name: 'Templates',
+    component: Templates
+  },
+  {
+    path: '/write',
+    name: 'Write',
+    component: Write
+  },
+  {
+    path: '/history',
+    name: 'History',
+    component: History
   },
   {
     path: '/about',
