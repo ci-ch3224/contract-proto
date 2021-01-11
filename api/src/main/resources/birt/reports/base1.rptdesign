@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201606072122</property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <grid id="4">
+            <column id="5"/>
+            <row id="6">
+                <cell id="7">
+                    <label id="12">
+                        <property name="textAlign">center</property>
+                        <text-property name="text">- title -</text-property>
+                    </label>
+                </cell>
+            </row>
+            <row id="8">
+                <cell id="9">
+                    <text id="34">
+                        <property name="contentType">auto</property>
+                        <text-property name="content"><![CDATA[- empty -]]></text-property>
+                    </text>
+                </cell>
+            </row>
+            <row id="10">
+                <cell id="11">
+                    <grid id="35">
+                        <column id="36">
+                            <property name="width">30px</property>
+                        </column>
+                        <column id="37">
+                            <property name="width">60px</property>
+                        </column>
+                        <column id="38"/>
+                        <column id="39">
+                            <property name="width">80px</property>
+                        </column>
+                        <column id="40">
+                            <property name="width">30px</property>
+                        </column>
+                        <column id="41">
+                            <property name="width">60px</property>
+                        </column>
+                        <column id="42"/>
+                        <column id="43">
+                            <property name="width">80px</property>
+                        </column>
+                        <row id="44">
+                            <cell id="45">
+                                <property name="colSpan">1</property>
+                                <property name="rowSpan">4</property>
+                                <property name="borderBottomStyle">solid</property>
+                                <property name="borderBottomWidth">medium</property>
+                                <property name="borderLeftStyle">solid</property>
+                                <property name="borderLeftWidth">medium</property>
+                                <property name="borderRightStyle">solid</property>
+                                <property name="borderRightWidth">medium</property>
+                                <property name="borderTopStyle">solid</property>
+                                <property name="borderTopWidth">medium</property>
+                                <property name="verticalAlign">middle</property>
+                                <label id="99">
+                                    <property name="whiteSpace">normal</property>
+                                    <text-property name="text">본        부</text-property>
+                                </label>
+                            </cell>
+                            <cell id="46">
+                                <property name="borderBottomStyle">solid</property>
+                                <property name="borderBottomWidth">medium</property>
+                                <property name="borderLeftStyle">solid</property>
+                                <property name="borderLeftWidth">medium</property>
+                                <property name="borderRightStyle">solid</property>
+                                <property name="borderRightWidth">medium</property>
+                                <property name="borderTopStyle">solid</property>
+                                <property name="borderTopWidth">medium</property>
+                                <label id="91">
+                                    <text-property name="text">주소</text-property>
+                                </label>
+                            </cell>
+                            <cell id="47">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                                <property name="borderBottomStyle">solid</property>
+                                <property name="borderBottomWidth">medium</property>
+                                <property name="borderLeftStyle">solid</property>
+                                <property name="borderLeftWidth">medium</property>
+                                <property name="borderRightStyle">solid</property>
+                                <property name="borderRightWidth">medium</property>
+                                <property name="borderTopStyle">solid</property>
+                                <property name="borderTopWidth">medium</property>
+                            </cell>
+                            <cell id="49">
+                                <property name="colSpan">1</property>
+                                <property name="rowSpan">4</property>
+                                <property name="borderBottomStyle">solid</property>
+                                <property name="borderBottomWidth">medium</property>
+                                <property name="borderLeftStyle">solid</property>
+                                <property name="borderLeftWidth">medium</property>
+                                <property name="borderRightStyle">solid</property>
+                                <property name="borderRightWidth">medium</property>
+                                <property name="borderTopStyle">solid</property>
+                                <property name="borderTopWidth">medium</property>
+                                <property name="verticalAlign">middle</property>
+                                <label id="100">
+                                    <property name="whiteSpace">normal</property>
+                                    <text-property name="text">가    맹    점</text-property>
+                                </label>
+                            </cell>
+                            <cell id="50">
+                                <property name="borderBottomStyle">solid</property>
+                                <property name="borderBottomWidth">medium</property>
+                                <property name="borderLeftStyle">solid</property>
+                                <property name="borderLeftWidth">medium</property>
+                                <property name="borderRightStyle">solid</property>
+                                <property name="borderRightWidth">medium</property>
+                                <property name="borderTopStyle">solid</property>
+                                <property name="borderTopWidth">medium</property>
+                                <label id="95">
+                                    <text-property name="text">주소</text-property>
+                                </label>
+                            </cell>
+                            <cell id="51">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                                <property name="borderBottomStyle">solid</property>
+                                <property name="borderBottomWidth">medium</property>
+                                <property name="borderLeftStyle">solid</property>
+                                <property name="borderLeftWidth">medium</property>
+                                <property name="borderRightStyle">solid</property>
+                                <property name="borderRightWidth">medium</property>
+                                <property name="borderTopStyle">solid</property>
+                                <property name="borderTopWidth">medium</property>
+                            </cell>
+                        </row>
+                        <row id="53">
+                            <cell id="55">
+                                <property name="borderBottomStyle">solid</property>
+                                <property name="borderBottomWidth">medium</property>
+                                <property name="borderLeftStyle">solid</property>
+                                <property name="borderLeftWidth">medium</property>
+                                <property name="borderRightStyle">solid</property>
+                                <property name="borderRightWidth">medium</property>
+                                <property name="borderTopStyle">solid</property>
+                                <property name="borderTopWidth">medium</property>
+                                <label id="92">
+                                    <text-property name="text">회사명</text-property>
+                                </label>
+                            </cell>
+                            <cell id="56">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                                <property name="borderBottomStyle">solid</property>
+                                <property name="borderBottomWidth">medium</property>
+                                <property name="borderLeftStyle">solid</property>
+                                <property name="borderLeftWidth">medium</property>
+                                <property name="borderRightStyle">solid</property>
+                                <property name="borderRightWidth">medium</property>
+                                <property name="borderTopStyle">solid</property>
+                                <property name="borderTopWidth">medium</property>
+                            </cell>
+                            <cell id="59">
+                                <property name="borderBottomStyle">solid</property>
+                                <property name="borderBottomWidth">medium</property>
+                                <property name="borderLeftStyle">solid</property>
+                                <property name="borderLeftWidth">medium</property>
+                                <property name="borderRightStyle">solid</property>
+                                <property name="borderRightWidth">medium</property>
+                                <property name="borderTopStyle">solid</property>
+                                <property name="borderTopWidth">medium</property>
+                                <label id="96">
+                                    <text-property name="text">회사명</text-property>
+                                </label>
+                            </cell>
+                            <cell id="60">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                                <property name="borderBottomStyle">solid</property>
+                                <property name="borderBottomWidth">medium</property>
+                                <property name="borderLeftStyle">solid</property>
+                                <property name="borderLeftWidth">medium</property>
+                                <property name="borderRightStyle">solid</property>
+                                <property name="borderRightWidth">medium</property>
+                                <property name="borderTopStyle">solid</property>
+                                <property name="borderTopWidth">medium</property>
+                            </cell>
+                        </row>
+                        <row id="62">
+                            <cell id="64">
+                                <property name="borderBottomStyle">solid</property>
+                                <property name="borderBottomWidth">medium</property>
+                                <property name="borderLeftStyle">solid</property>
+                                <property name="borderLeftWidth">medium</property>
+                                <property name="borderRightStyle">solid</property>
+                                <property name="borderRightWidth">medium</property>
+                                <property name="borderTopStyle">solid</property>
+                                <property name="borderTopWidth">medium</property>
+                                <label id="93">
+                                    <text-property name="text">대표자</text-property>
+                                </label>
+                            </cell>
+                            <cell id="65">
+                                <property name="borderBottomStyle">solid</property>
+                                <property name="borderBottomWidth">medium</property>
+                                <property name="borderLeftStyle">solid</property>
+                                <property name="borderLeftWidth">medium</property>
+                                <property name="borderRightStyle">solid</property>
+                                <property name="borderRightWidth">medium</property>
+                                <property name="borderTopStyle">solid</property>
+                                <property name="borderTopWidth">medium</property>
+                            </cell>
+                            <cell id="66">
+                                <property name="colSpan">1</property>
+                                <property name="rowSpan">2</property>
+                                <property name="borderBottomStyle">solid</property>
+                                <property name="borderBottomWidth">medium</property>
+                                <property name="borderLeftStyle">solid</property>
+                                <property name="borderLeftWidth">medium</property>
+                                <property name="borderRightStyle">solid</property>
+                                <property name="borderRightWidth">medium</property>
+                                <property name="borderTopStyle">solid</property>
+                                <property name="borderTopWidth">medium</property>
+                            </cell>
+                            <cell id="68">
+                                <property name="borderBottomStyle">solid</property>
+                                <property name="borderBottomWidth">medium</property>
+                                <property name="borderLeftStyle">solid</property>
+                                <property name="borderLeftWidth">medium</property>
+                                <property name="borderRightStyle">solid</property>
+                                <property name="borderRightWidth">medium</property>
+                                <property name="borderTopStyle">solid</property>
+                                <property name="borderTopWidth">medium</property>
+                                <label id="97">
+                                    <text-property name="text">대표자</text-property>
+                                </label>
+                            </cell>
+                            <cell id="69">
+                                <property name="borderBottomStyle">solid</property>
+                                <property name="borderBottomWidth">medium</property>
+                                <property name="borderLeftStyle">solid</property>
+                                <property name="borderLeftWidth">medium</property>
+                                <property name="borderRightStyle">solid</property>
+                                <property name="borderRightWidth">medium</property>
+                                <property name="borderTopStyle">solid</property>
+                                <property name="borderTopWidth">medium</property>
+                            </cell>
+                            <cell id="70">
+                                <property name="colSpan">1</property>
+                                <property name="rowSpan">2</property>
+                                <property name="borderBottomStyle">solid</property>
+                                <property name="borderBottomWidth">medium</property>
+                                <property name="borderLeftStyle">solid</property>
+                                <property name="borderLeftWidth">medium</property>
+                                <property name="borderRightStyle">solid</property>
+                                <property name="borderRightWidth">medium</property>
+                                <property name="borderTopStyle">solid</property>
+                                <property name="borderTopWidth">medium</property>
+                            </cell>
+                        </row>
+                        <row id="71">
+                            <cell id="73">
+                                <property name="borderBottomStyle">solid</property>
+                                <property name="borderBottomWidth">medium</property>
+                                <property name="borderLeftStyle">solid</property>
+                                <property name="borderLeftWidth">medium</property>
+                                <property name="borderRightStyle">solid</property>
+                                <property name="borderRightWidth">medium</property>
+                                <property name="borderTopStyle">solid</property>
+                                <property name="borderTopWidth">medium</property>
+                                <label id="94">
+                                    <text-property name="text">연락처</text-property>
+                                </label>
+                            </cell>
+                            <cell id="74">
+                                <property name="borderBottomStyle">solid</property>
+                                <property name="borderBottomWidth">medium</property>
+                                <property name="borderLeftStyle">solid</property>
+                                <property name="borderLeftWidth">medium</property>
+                                <property name="borderRightStyle">solid</property>
+                                <property name="borderRightWidth">medium</property>
+                                <property name="borderTopStyle">solid</property>
+                                <property name="borderTopWidth">medium</property>
+                            </cell>
+                            <cell id="77">
+                                <property name="borderBottomStyle">solid</property>
+                                <property name="borderBottomWidth">medium</property>
+                                <property name="borderLeftStyle">solid</property>
+                                <property name="borderLeftWidth">medium</property>
+                                <property name="borderRightStyle">solid</property>
+                                <property name="borderRightWidth">medium</property>
+                                <property name="borderTopStyle">solid</property>
+                                <property name="borderTopWidth">medium</property>
+                                <label id="98">
+                                    <text-property name="text">연락처</text-property>
+                                </label>
+                            </cell>
+                            <cell id="78">
+                                <property name="borderBottomStyle">solid</property>
+                                <property name="borderBottomWidth">medium</property>
+                                <property name="borderLeftStyle">solid</property>
+                                <property name="borderLeftWidth">medium</property>
+                                <property name="borderRightStyle">solid</property>
+                                <property name="borderRightWidth">medium</property>
+                                <property name="borderTopStyle">solid</property>
+                                <property name="borderTopWidth">medium</property>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+            </row>
+        </grid>
+    </body>
+</report>

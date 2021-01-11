@@ -1,0 +1,7 @@
+birt:
+  reports:
+    relative:
+      path: birt/reports/
+  images:
+    relative:
+      path: images/
