@@ -50,14 +50,16 @@
         </v-stepper-header>
 
         <v-stepper-items>
+          <!-- 1. 포멧 선택 -->
           <v-stepper-content step="1" class="py-2 px-0">
-            <v-carousel v-model="model">
-              <v-carousel-item>
+            <v-carousel v-model="selectedReportIndex">
+              <v-carousel-item
+                v-for="(d, i) in data"
+                :key="i"
+              >
                 <v-sheet
                   color="white"
                   height="100%"
-                  v-for="(d, i) in data"
-                  :key="i"
                   tile
                 >
                   <viewer :initialValue="d.html"
@@ -70,34 +72,35 @@
                 color="primary"
                 @click="step1()"
               >
-                Continue
+                선택
               </v-btn>
 
               <v-btn text>
-                Cancel
+                취소
               </v-btn>
             </div>
           </v-stepper-content>
 
+          <!-- 2. 내용 입력 -->
           <v-stepper-content step="2">
-            <viewer :initialValue="editorText"
-                    height="500px"
-            />
+            <component v-bind:is="selectedComponent">
+            </component>
 
             <div class="mt-2">
               <v-btn
                 color="primary"
                 @click="e1 = 3"
               >
-                Continue
+                본문저장
               </v-btn>
 
               <v-btn text>
-                Cancel
+                취소
               </v-btn>
             </div>
           </v-stepper-content>
 
+          <!-- 3. 미리보기 및 완료 -->
           <v-stepper-content step="3">
             <v-card
               class="mb-12"
@@ -130,40 +133,36 @@ import '@toast-ui/editor/dist/toastui-editor-viewer.css'
 import { Component, Vue } from 'vue-property-decorator'
 import { Editor, Viewer } from '@toast-ui/vue-editor'
 import { reportService } from '@/service/ReportService'
+import { Report } from '@/model/report'
+import Base1 from '@/components/templates/Base1.vue'
+import Base2 from '@/components/templates/Base2.vue'
 
 @Component({
   components: {
-    Editor, Viewer
+    Editor, Viewer, Base1, Base2
   }
 })
 export default class WriteTemplate extends Vue {
   editorText = '<p>hello~</p>'
   e1 = 1
   reports = ['base1', 'base2']
-  data = [] as any
+  data: Report[] = []
+  selectedComponent = 'base1'
+  selectedReportIndex = 0
 
   step1 () {
     this.e1 = 2
-    this.editorText = this.getHtml()
-    console.log(this.editorText)
-  }
-
-  getHtml () {
-    const html = (this.$refs.toastuiEditor as HTMLFormElement).invoke('getHtml')
-    return html
+    this.selectedComponent = this.reports[this.selectedReportIndex]
   }
 
   created () {
     for (const nm of this.reports) {
-      (async (nm) => {
-        const html = await reportService.getHtml(nm).then(res => {
-          return res.data
-        })
+      reportService.getHtml(nm).then(res => {
         this.data.push({
           name: nm,
-          html: html
+          html: res.data
         })
-      })(nm)
+      })
     }
   }
 }

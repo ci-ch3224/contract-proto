@@ -26,10 +26,5 @@ import { Editor } from '@toast-ui/vue-editor'
 })
 export default class Base1 extends Vue {
   editorText = '<p>hello~</p>'
-
-  getHtml () {
-    const html = (this.$refs.toastuiEditor as HTMLFormElement).invoke('getHtml')
-    return html
-  }
 }
 </script>
