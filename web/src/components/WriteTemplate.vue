@@ -75,7 +75,9 @@
                 선택
               </v-btn>
 
-              <v-btn text>
+              <v-btn text
+                @click="cancel()"
+              >
                 취소
               </v-btn>
             </div>
@@ -94,7 +96,9 @@
                 본문저장
               </v-btn>
 
-              <v-btn text>
+              <v-btn text
+                @click="cancel()"
+              >
                 취소
               </v-btn>
             </div>
@@ -115,7 +119,7 @@
               Continue
             </v-btn>
 
-            <v-btn text>
+            <v-btn text @click="cancel()">
               Cancel
             </v-btn>
           </v-stepper-content>
@@ -143,7 +147,6 @@ import Base2 from '@/components/templates/Base2.vue'
   }
 })
 export default class WriteTemplate extends Vue {
-  editorText = '<p>hello~</p>'
   e1 = 1
   reports = ['base1', 'base2']
   data: Report[] = []
@@ -155,15 +158,27 @@ export default class WriteTemplate extends Vue {
     this.selectedComponent = this.reports[this.selectedReportIndex]
   }
 
+  cancel () {
+    if (this.e1 > 1) {
+      this.e1--
+    }
+  }
+
   created () {
-    for (const nm of this.reports) {
-      reportService.getHtml(nm).then(res => {
+    this.initReportData()
+  }
+
+  /* report data 가져오기 */
+  private initReportData () {
+    this.reports.reduce((previous, current) => {
+      return previous.then(async () => {
+        const res = await reportService.getHtml(current)
         this.data.push({
-          name: nm,
+          name: current,
           html: res.data
         })
       })
-    }
+    }, Promise.resolve())
   }
 }
 </script>
