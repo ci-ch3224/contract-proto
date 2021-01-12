@@ -30,7 +30,7 @@
             :complete="e1 > 1"
             step="1"
           >
-            본문작성
+            포멧 선택
           </v-stepper-step>
 
           <v-divider></v-divider>
@@ -39,23 +39,32 @@
             :complete="e1 > 2"
             step="2"
           >
-            날인 위치 설정 - 1
+            내용 입력
           </v-stepper-step>
 
           <v-divider></v-divider>
 
           <v-stepper-step step="3">
-            날인 위치 설정 - 2
+            미리보기 및 완료
           </v-stepper-step>
         </v-stepper-header>
 
         <v-stepper-items>
           <v-stepper-content step="1" class="py-2 px-0">
-            <editor :initialValue="editorText"
-                    initialEditType="wysiwyg"
-                    height="500px"
-                    ref="toastuiEditor"
-            />
+            <v-carousel v-model="model">
+              <v-carousel-item>
+                <v-sheet
+                  color="white"
+                  height="100%"
+                  v-for="(d, i) in data"
+                  :key="i"
+                  tile
+                >
+                  <viewer :initialValue="d.html"
+                  />
+                </v-sheet>
+              </v-carousel-item>
+            </v-carousel>
             <div class="mt-2">
               <v-btn
                 color="primary"
@@ -120,6 +129,7 @@ import '@toast-ui/editor/dist/toastui-editor-viewer.css'
 
 import { Component, Vue } from 'vue-property-decorator'
 import { Editor, Viewer } from '@toast-ui/vue-editor'
+import { reportService } from '@/service/ReportService'
 
 @Component({
   components: {
@@ -129,6 +139,8 @@ import { Editor, Viewer } from '@toast-ui/vue-editor'
 export default class WriteTemplate extends Vue {
   editorText = '<p>hello~</p>'
   e1 = 1
+  reports = ['base1', 'base2']
+  data = [] as any
 
   step1 () {
     this.e1 = 2
@@ -139,6 +151,20 @@ export default class WriteTemplate extends Vue {
   getHtml () {
     const html = (this.$refs.toastuiEditor as HTMLFormElement).invoke('getHtml')
     return html
+  }
+
+  created () {
+    for (const nm of this.reports) {
+      (async (nm) => {
+        const html = await reportService.getHtml(nm).then(res => {
+          return res.data
+        })
+        this.data.push({
+          name: nm,
+          html: html
+        })
+      })(nm)
+    }
   }
 }
 </script>
