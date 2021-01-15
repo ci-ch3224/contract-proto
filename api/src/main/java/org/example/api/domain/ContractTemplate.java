@@ -24,6 +24,9 @@ public class ContractTemplate {
     @Column(name = "sub_title", nullable = false)
     private String subTitle;
 
+    @Column(name = "template_name", nullable = false)
+    private String templateName;
+
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "contract_template_paragraph",
         joinColumns = @JoinColumn(name = "contract_template_id"),
