@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201606072122</property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="layoutPreference">fixed layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="Data Source" id="7">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledContentBidiFormatStr</name>
+                </ex-property>
+            </list-property>
+            <property name="odaDriverClass">com.mysql.jdbc.Driver</property>
+            <property name="odaURL">jdbc:mysql://localhost:3306/testdb?useSSL=false&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC</property>
+            <property name="odaUser">testuser</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">MTIzNA==</encrypted-property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="dsCompany" id="8">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">id</property>
+                    <text-property name="displayName">id</text-property>
+                    <text-property name="heading">id</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">name</property>
+                    <text-property name="displayName">name</text-property>
+                    <text-property name="heading">name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">address</property>
+                    <text-property name="displayName">address</text-property>
+                    <text-property name="heading">address</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">representative</property>
+                    <text-property name="displayName">representative</text-property>
+                    <text-property name="heading">representative</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">id</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">address</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">representative</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">id</property>
+                    <property name="nativeName">id</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">name</property>
+                    <property name="nativeName">name</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">address</property>
+                    <property name="nativeName">address</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">representative</property>
+                    <property name="nativeName">representative</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select id, name, address, representative
+from company]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>id</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
+            <design:precision>20</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>id</design:label>
+            <design:formattingHints>
+              <design:displaySize>20</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>name</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>name</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>name</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>address</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>address</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>address</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>representative</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>representative</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>representative</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="type">a4</property>
+            <property name="orientation">auto</property>
+            <property name="showHeaderOnFirst">true</property>
+            <property name="headerHeight">0in</property>
+            <property name="footerHeight">0in</property>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <grid id="13">
+            <property name="height">10.947916666666666in</property>
+            <column id="14"/>
+            <row id="15">
+                <property name="verticalAlign">bottom</property>
+                <property name="height">1.5625in</property>
+                <cell id="16">
+                    <label name="main_title" id="25">
+                        <property name="fontSize">24pt</property>
+                        <property name="textAlign">center</property>
+                        <text-property name="text">용역 계약서</text-property>
+                    </label>
+                </cell>
+            </row>
+            <row id="17">
+                <cell id="18">
+                    <label name="sub_title" id="26">
+                        <property name="fontSize">18pt</property>
+                        <property name="textAlign">center</property>
+                        <text-property name="text">(S/W 계발)</text-property>
+                    </label>
+                </cell>
+            </row>
+            <row id="19">
+                <property name="verticalAlign">middle</property>
+                <property name="height">7.020833333333333in</property>
+                <cell id="20">
+                    <label id="49">
+                        <property name="textAlign">center</property>
+                        <text-property name="text">2020 년 12월 14일.</text-property>
+                    </label>
+                </cell>
+            </row>
+            <row id="21">
+                <property name="height">1.9791666666666667in</property>
+                <cell id="22">
+                    <grid id="50">
+                        <property name="height">1.90625in</property>
+                        <column id="51"/>
+                        <row id="52">
+                            <property name="verticalAlign">middle</property>
+                            <property name="height">50%</property>
+                            <cell id="53">
+                                <data id="58">
+                                    <property name="fontSize">20pt</property>
+                                    <property name="textAlign">center</property>
+                                    <property name="dataSet">dsCompany</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">name</property>
+                                            <text-property name="displayName">name</text-property>
+                                            <expression name="expression" type="javascript">"\"갑\"" + dataSetRow["name"]</expression>
+                                            <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">name</property>
+                                </data>
+                            </cell>
+                        </row>
+                        <row id="54">
+                            <property name="verticalAlign">middle</property>
+                            <property name="height">50%</property>
+                            <cell id="55">
+                                <data id="59">
+                                    <property name="fontSize">20pt</property>
+                                    <property name="textAlign">center</property>
+                                    <property name="dataSet">dsCompany</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">name</property>
+                                            <text-property name="displayName">name</text-property>
+                                            <expression name="expression" type="javascript">"\"을\"" + dataSetRow["name"]</expression>
+                                            <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">name</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+            </row>
+        </grid>
+        <grid id="60">
+            <column id="61"/>
+            <row id="62">
+                <cell id="63">
+                    <grid id="64">
+                        <property name="height">9.333333333333334in</property>
+                        <column id="65"/>
+                        <row id="66">
+                            <property name="verticalAlign">middle</property>
+                            <property name="height">0.9791666666666666in</property>
+                            <cell id="67">
+                                <label id="74">
+                                    <property name="fontSize">20pt</property>
+                                    <property name="textAlign">center</property>
+                                    <text-property name="text">용 역 계 약 서</text-property>
+                                </label>
+                            </cell>
+                        </row>
+                        <row id="68">
+                            <property name="height">5.645833333333333in</property>
+                            <cell id="69">
+                                <text id="75">
+                                    <property name="contentType">html</property>
+                                    <text-property name="content"><![CDATA[<table>
+<tr>
+<th>계약명</th><td>S사 소프트웨어 개발 용역</td>
+</tr>
+<tr>
+<th>계약금액</th><td>금 이천만원정 (￦20,000,000 ) 부가세별도<br>(상세내역은 견적서 참조)</td>
+</tr>
+<tr>
+<th>결제조건</th><td><ul><li>계약금액의 50%(계약시점)</li>
+<li>잔금 50%(계약 종료 후 7일이내 현금지급)</li></ul></td>
+</tr>
+<tr>
+<th>하자보증</th><td>없음</td>
+</tr>
+<tr>
+<th>기타사항</th><td>각종 세액 공제 후 입금</td>
+</tr>
+</table>
+<p>
+상기 전산시스템 구축에 대하여 ㈜갑인정보기술(이하 "갑")과 ㈜쓰리웨어(이하 "을")은 하기의 일반약관을 계약내용으로 하여 상호신의에 입각하여 본 계약을 체결하고 그 증거로 2통을 작성하여 쌍방이 서명 날인한 후 각각 한 통씩 보관한다.
+</p>]]></text-property>
+                                </text>
+                            </cell>
+                        </row>
+                        <row id="70">
+                            <property name="height">1.0729166666666667in</property>
+                            <cell id="71">
+                                <label id="78">
+                                    <property name="textAlign">right</property>
+                                    <text-property name="text">계약일자 : 2020년 12월 14일</text-property>
+                                </label>
+                            </cell>
+                        </row>
+                        <row id="72">
+                            <cell id="73">
+                                <grid id="79">
+                                    <property name="width">7.59375in</property>
+                                    <column id="80">
+                                        <property name="width">15%</property>
+                                    </column>
+                                    <column id="81">
+                                        <property name="width">15%</property>
+                                    </column>
+                                    <column id="82">
+                                        <property name="width">70%</property>
+                                    </column>
+                                    <row id="83">
+                                        <cell id="84">
+                                            <property name="colSpan">1</property>
+                                            <property name="rowSpan">3</property>
+                                            <label id="116">
+                                                <property name="textAlign">right</property>
+                                                <text-property name="text">갑 )</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="85">
+                                            <label id="110">
+                                                <text-property name="text">주    소 :</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="86"/>
+                                    </row>
+                                    <row id="87">
+                                        <cell id="89">
+                                            <label id="111">
+                                                <text-property name="text">회사명 :</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="90"/>
+                                    </row>
+                                    <row id="91">
+                                        <cell id="93">
+                                            <label id="112">
+                                                <text-property name="text">대표자 :</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="94"/>
+                                    </row>
+                                    <row id="95">
+                                        <cell id="96">
+                                            <property name="colSpan">1</property>
+                                            <property name="rowSpan">3</property>
+                                            <label id="117">
+                                                <property name="textAlign">right</property>
+                                                <text-property name="text">을)</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="97">
+                                            <label id="113">
+                                                <text-property name="text">주    소 :</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="98"/>
+                                    </row>
+                                    <row id="99">
+                                        <cell id="101">
+                                            <label id="114">
+                                                <text-property name="text">회사명 :</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="102"/>
+                                    </row>
+                                    <row id="103">
+                                        <cell id="105">
+                                            <label id="115">
+                                                <text-property name="text">대표자 :</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="106"/>
+                                    </row>
+                                </grid>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+            </row>
+        </grid>
+    </body>
+</report>

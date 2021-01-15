@@ -63,6 +63,7 @@
                   tile
                 >
                   <viewer :initialValue="d.html"
+                          height="100%"
                   />
                 </v-sheet>
               </v-carousel-item>
@@ -140,15 +141,16 @@ import { reportService } from '@/service/ReportService'
 import { Report } from '@/model/report'
 import Base1 from '@/components/templates/Base1.vue'
 import Base2 from '@/components/templates/Base2.vue'
+import Base3 from '@/components/templates/Base3.vue'
 
 @Component({
   components: {
-    Editor, Viewer, Base1, Base2
+    Editor, Viewer, Base1, Base2, Base3
   }
 })
 export default class WriteTemplate extends Vue {
   e1 = 1
-  reports = ['base1', 'base2']
+  reports = ['base1', 'base2', 'base3']
   data: Report[] = []
   selectedComponent = 'base1'
   selectedReportIndex = 0
@@ -182,3 +184,7 @@ export default class WriteTemplate extends Vue {
   }
 }
 </script>
+
+<style scoped>
+.v-sheet {overflow-y: auto;}
+</style>
