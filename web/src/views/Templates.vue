@@ -68,7 +68,6 @@ export default class Templates extends Vue {
       }
     ],
     options: {
-      bodyHeight: 'fitToParent'
     }
   }
 
