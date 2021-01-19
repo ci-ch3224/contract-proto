@@ -14,7 +14,8 @@
       v-model="drawer"
       absolute
       temporary
-    >
+      style="position:fixed; top:0; left:0; overflow-y:auto;"
+    ><!-- drawer 스크롤이 본문을 따라가는 이슈 https://github.com/vuetifyjs/vuetify/issues/3385 -->
       <v-list
         nav
         dense
