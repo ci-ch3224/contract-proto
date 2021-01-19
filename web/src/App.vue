@@ -21,8 +21,4 @@ export default class App extends Vue {
 .v-navigation-drawer {
   z-index: 999999 !important;
 }
-/* v-app-bar는 navigation-drawer 밑으로 항상위 */
-header.v-app-bar {
-  z-index: 999998 !important;
-}
 </style>

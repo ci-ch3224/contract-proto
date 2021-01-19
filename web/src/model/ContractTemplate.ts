@@ -1,7 +1,8 @@
 import { ContractParagraph } from '@/model/ContractParagraph'
 
 export class ContractTemplate {
-  private templateName: string
+  templateName: string
+  id = 0
   title = ''
   subTitle = ''
   bigParagraphs: ContractParagraph[] = []

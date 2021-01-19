@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import Home from '../views/Home.vue'
 import Templates from '../views/Templates.vue'
-import Write from '../views/Write.vue'
+import Contracts from '../views/Contracts.vue'
 import History from '../views/History.vue'
 
 Vue.use(VueRouter)
@@ -19,9 +19,9 @@ const routes: Array<RouteConfig> = [
     component: Templates
   },
   {
-    path: '/write',
-    name: 'Write',
-    component: Write
+    path: '/contracts',
+    name: 'Contracts',
+    component: Contracts
   },
   {
     path: '/history',

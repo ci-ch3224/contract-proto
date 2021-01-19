@@ -54,7 +54,7 @@ export default class LayoutNormal extends Vue {
   drawer = false
   items = [
     ['mdi-folder-multiple', '계약서 템플릿 관리', '/templates'],
-    ['mdi-pen-plus', '계약서 작성', '/write'],
+    ['mdi-pen-plus', '계약서 작성', '/contracts'],
     ['mdi-folder-search', '계약서 이력조회', '/history']
   ]
 }
