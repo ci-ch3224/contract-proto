@@ -1,16 +1,12 @@
 package org.example.api.domain;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
 @Entity
 @Table(name = "contract_template")
 public class ContractTemplate {
@@ -32,4 +28,13 @@ public class ContractTemplate {
         joinColumns = @JoinColumn(name = "contract_template_id"),
         inverseJoinColumns = @JoinColumn(name = "contract_paragraph_id"))
     private List<ContractParagraph> bigParagraphs;
+
+    @Builder
+    public ContractTemplate(long id, String title, String subTitle, String templateName, List<ContractParagraph> bigParagraphs) {
+        this.id = id;
+        this.title = title;
+        this.subTitle = subTitle;
+        this.templateName = templateName;
+        this.bigParagraphs = bigParagraphs;
+    }
 }

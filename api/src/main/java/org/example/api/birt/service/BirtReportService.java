@@ -121,6 +121,8 @@ public class BirtReportService implements ApplicationContextAware, DisposableBea
         htmlOptions.setBaseImageURL("/" + reportsPath + imagesPath);
         htmlOptions.setImageDirectory(imageFolder);
         htmlOptions.setImageHandler(htmlImageHandler);
+
+        putRequestParameter(request, runAndRenderTask);
         runAndRenderTask.setRenderOption(htmlOptions);
         runAndRenderTask.getAppContext().put(EngineConstants.APPCONTEXT_BIRT_VIEWER_HTTPSERVET_REQUEST, request);
 
@@ -134,6 +136,14 @@ public class BirtReportService implements ApplicationContextAware, DisposableBea
         }
     }
 
+    private void putRequestParameter(HttpServletRequest request, IRunAndRenderTask runAndRenderTask) {
+        Enumeration<String> parameterNames = request.getParameterNames();
+        while(parameterNames.hasMoreElements()) {
+            String paramName = parameterNames.nextElement();
+            runAndRenderTask.setParameterValue(paramName, request.getParameter(paramName));
+        }
+    }
+
     /**
      * Generate a report as PDF
      */
@@ -144,6 +154,7 @@ public class BirtReportService implements ApplicationContextAware, DisposableBea
         IRenderOption options = new RenderOption();
         PDFRenderOption pdfRenderOption = new PDFRenderOption(options);
         pdfRenderOption.setOutputFormat("pdf");
+        putRequestParameter(request, runAndRenderTask);
         runAndRenderTask.setRenderOption(pdfRenderOption);
         runAndRenderTask.getAppContext().put(EngineConstants.APPCONTEXT_PDF_RENDER_CONTEXT, request);
 

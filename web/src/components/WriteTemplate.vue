@@ -54,17 +54,23 @@
           <v-stepper-content step="1" class="py-2 px-0">
             <v-carousel v-model="selectedReportIndex">
               <v-carousel-item
-                v-for="(d, i) in data"
+                v-for="(d, i) in reports"
                 :key="i"
               >
                 <v-sheet
-                  color="white"
+                  color="grey lighten-4"
                   height="100%"
                   tile
+                  class="d-flex justify-center"
                 >
-                  <viewer :initialValue="d.html"
-                          height="100%"
-                  />
+                  <div style="width:70%;background-color: white;">
+                    <pdf
+                      v-for="i in d.numPages"
+                      :key="i"
+                      :src="d.src"
+                      :page="i"
+                    ></pdf>
+                  </div>
                 </v-sheet>
               </v-carousel-item>
             </v-carousel>
@@ -86,13 +92,13 @@
 
           <!-- 2. 내용 입력 -->
           <v-stepper-content step="2">
-            <component v-bind:is="selectedComponent">
+            <component ref="contents" v-bind:is="selectedComponent">
             </component>
 
             <div class="mt-2">
               <v-btn
                 color="primary"
-                @click="e1 = 3"
+                @click="saveContents()"
               >
                 본문저장
               </v-btn>
@@ -107,21 +113,32 @@
 
           <!-- 3. 미리보기 및 완료 -->
           <v-stepper-content step="3">
-            <v-card
-              class="mb-12"
-              color="grey lighten-1"
-              height="200px"
-            ></v-card>
-
+            <v-sheet
+              color="grey lighten-4"
+              height="100%"
+              class="d-flex justify-center"
+            >
+              <div style="width:70%;background-color: white;">
+                <pdf
+                  v-for="i in numPages"
+                  :key="i"
+                  :src="pdfSrc"
+                  :page="i"
+                ></pdf>
+              </div>
+            </v-sheet>
             <v-btn
               color="primary"
               @click="e1 = 1"
             >
-              Continue
+              확정
             </v-btn>
 
             <v-btn text @click="cancel()">
-              Cancel
+              취소
+            </v-btn>
+            <v-btn text color="lime" :href="pdfHref" target="_blank" download>
+              Download
             </v-btn>
           </v-stepper-content>
         </v-stepper-items>
@@ -137,27 +154,35 @@ import '@toast-ui/editor/dist/toastui-editor-viewer.css'
 
 import { Component, Vue } from 'vue-property-decorator'
 import { Editor, Viewer } from '@toast-ui/vue-editor'
-import { reportService } from '@/service/ReportService'
-import { Report } from '@/model/report'
+import pdf from 'vue-pdf'
+import { contractTemplateService } from '@/service/ContractTemplateService'
 import Base1 from '@/components/templates/Base1.vue'
 import Base2 from '@/components/templates/Base2.vue'
 import Base3 from '@/components/templates/Base3.vue'
 
+interface Report {
+  name: string;
+  numPages: number;
+  src: any;
+}
+
 @Component({
   components: {
-    Editor, Viewer, Base1, Base2, Base3
+    Editor, Viewer, Base1, Base2, Base3, pdf
   }
 })
 export default class WriteTemplate extends Vue {
   e1 = 1
-  reports = ['base1', 'base2', 'base3']
-  data: Report[] = []
+  reports: Report[] = []
   selectedComponent = 'base1'
   selectedReportIndex = 0
+  pdfHref = ''
+  pdfSrc = pdf.createLoadingTask('http://localhost:8080/report/base3?output=pdf&templateId=3')
+  numPages = 3
 
   step1 () {
     this.e1 = 2
-    this.selectedComponent = this.reports[this.selectedReportIndex]
+    this.selectedComponent = this.reports[this.selectedReportIndex].name
   }
 
   cancel () {
@@ -167,20 +192,38 @@ export default class WriteTemplate extends Vue {
   }
 
   created () {
-    this.initReportData()
+    this.initReports()
   }
 
-  /* report data 가져오기 */
-  private initReportData () {
-    this.reports.reduce((previous, current) => {
+  initReports () {
+    ['base1', 'base2', 'base3'].reduce((previous, current) => {
       return previous.then(async () => {
-        const res = await reportService.getHtml(current)
-        this.data.push({
+        const src = pdf.createLoadingTask(`http://localhost:8080/report/${current}?output=pdf`)
+        const res = await src.promise
+        this.reports.push({
           name: current,
-          html: res.data
+          src: src,
+          numPages: res.numPages
         })
       })
     }, Promise.resolve())
+  }
+
+  saveContents () {
+    const result = (this.$refs.contents as any).getContents()
+    contractTemplateService.save(result)
+      .then(({ data: savedTemplate }) => {
+        (this.$refs.contents as any).setContents(savedTemplate)
+        this.e1 = 3
+        this.pdfHref = `http://localhost:8080/report/${this.selectedComponent}?output=pdf&templateId=${savedTemplate.id}`
+        this.pdfSrc = pdf.createLoadingTask(this.pdfHref)
+        this.pdfSrc.promise.then((a: any) => {
+          this.numPages = a.numPages
+        })
+      })
+      .catch(() => {
+        console.log('error')
+      })
   }
 }
 </script>

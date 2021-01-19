@@ -24,7 +24,11 @@
     </v-row>
     <v-row>
       <v-col>
-        <grid ref="tuiGrid" :data="gridProps.data" :columns="gridProps.columns" />
+        <grid ref="tuiGrid" :data="list" :columns="gridProps.columns" :options="gridProps.options" />
+        <v-pagination
+          v-model="page"
+          :length="6"
+        ></v-pagination>
       </v-col>
     </v-row>
   </v-container>
@@ -35,6 +39,8 @@ import { Component, Vue } from 'vue-property-decorator'
 import 'tui-grid/dist/tui-grid.css'
 import { Grid } from '@toast-ui/vue-grid'
 import WriteTemplate from '@/components/WriteTemplate.vue'
+import { contractTemplateService } from '@/service/ContractTemplateService'
+import { ContractTemplate } from '@/model/ContractTemplate'
 
 @Component({
   components: {
@@ -43,38 +49,39 @@ import WriteTemplate from '@/components/WriteTemplate.vue'
 })
 export default class Templates extends Vue {
   dialog = false
+  list: ContractTemplate[] = []
+  page = 1
+
   gridProps = {
-    data: [ // for rowData prop
-      {
-        title: 'Beautiful Lies',
-        createdBy: 'Birdy',
-        lastModifiedAt: '2020-01-01'
-      },
-      {
-        title: 'X',
-        createdBy: 'Ed Sheeran',
-        lastModifiedAt: '2020-01-01'
-      },
-      {
-        title: 'X',
-        createdBy: 'Ed Sheeran',
-        lastModifiedAt: '2020-01-01'
-      }
-    ],
-    columns: [ // for columnData prop
+    columns: [
       {
         header: '계약서명',
         name: 'title'
       },
       {
         header: '등록자',
-        name: 'createdBy'
+        name: 'id'
       },
       {
         header: '최근수정일',
-        name: 'lastModifiedAt'
+        name: 'subTitle'
       }
-    ]
+    ],
+    options: {
+      bodyHeight: 'fitToParent'
+    }
+  }
+
+  search (): void {
+    contractTemplateService.getAll().then(({ data: list }) => {
+      console.log(list)
+      const grid = (this.$refs.tuiGrid as Grid)
+      grid.invoke('resetData', list)
+    })
+  }
+
+  created () {
+    this.search()
   }
 
   closeDialog () {

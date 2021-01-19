@@ -4,12 +4,12 @@
       <v-card-title>표지</v-card-title>
       <v-card-text>
         <v-text-field
-          :value="contractTemplate.title"
+          v-model="contractTemplate.title"
           label="계약서명"
         ></v-text-field>
         <v-text-field
           label="소제목"
-          :value="contractTemplate.subTitle"
+          v-model="contractTemplate.subTitle"
         ></v-text-field>
       </v-card-text>
     </v-card>
@@ -18,7 +18,7 @@
       <v-card-text>
         <editor initialEditType="wysiwyg"
                 height="500px"
-                ref="toastuiEditor"
+                ref="contractContents"
         />
       </v-card-text>
     </v-card>
@@ -27,7 +27,7 @@
       <v-card-text>
         <v-text-field
           label="약관명"
-          :value="contractTemplate.bigParagraphs[1].title"
+          v-model="contractTemplate.bigParagraphs[1].title"
         ></v-text-field>
         <v-card-actions>
           <v-btn
@@ -41,7 +41,7 @@
           <v-btn
             outlined
             rounded
-            @click="test()"
+            @click="getContents()"
           >
             test
           </v-btn>
@@ -59,7 +59,7 @@
               <v-text-field
                 label="조항명"
                 :prefix="'제 ' + (i+1) + ' 조'"
-                :value="item.title"
+                v-model="item.title"
               ></v-text-field>
               <v-spacer></v-spacer>
               <v-btn
@@ -87,37 +87,10 @@ import 'codemirror/lib/codemirror.css'
 import '@toast-ui/editor/dist/toastui-editor.css'
 import '@toast-ui/editor/dist/toastui-editor-viewer.css'
 
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Emit } from 'vue-property-decorator'
 import { Editor } from '@toast-ui/vue-editor'
-
-class ContractParagraph {
-  title = ''
-  contents = ''
-  seq = 0
-  smallParagraphs: ContractParagraph[] = []
-
-  getParagraphCount () {
-    return this.smallParagraphs.length
-  }
-
-  addParagraphs (paragraph: ContractParagraph) {
-    this.smallParagraphs.push(paragraph)
-  }
-
-  removeParagraph (index: number) {
-    this.smallParagraphs.splice(index, 1)
-  }
-}
-
-class ContractTemplate {
-  title = ''
-  subTitle = ''
-  bigParagraphs: ContractParagraph[] = []
-
-  addParagraphs (paragraph: ContractParagraph) {
-    this.bigParagraphs.push(paragraph)
-  }
-}
+import { ContractParagraph } from '@/model/ContractParagraph'
+import { ContractTemplate } from '@/model/ContractTemplate'
 
 @Component({
   components: {
@@ -125,7 +98,7 @@ class ContractTemplate {
   }
 })
 export default class Base3 extends Vue {
-  contractTemplate: ContractTemplate = new ContractTemplate()
+  contractTemplate: ContractTemplate = new ContractTemplate('base3')
 
   constructor () {
     super()
@@ -141,16 +114,22 @@ export default class Base3 extends Vue {
     this.contractTemplate.bigParagraphs[1].removeParagraph(index)
   }
 
-  test () {
-    const spCount = this.contractTemplate.bigParagraphs[1].getParagraphCount()
-    for (let i = 0; i < spCount; i++) {
+  @Emit('getContents')
+  getContents (): ContractTemplate {
+    this.contractTemplate.bigParagraphs[0].seq = 0
+    this.contractTemplate.bigParagraphs[1].seq = 1
+    this.contractTemplate.bigParagraphs[1].smallParagraphs.forEach((sp, i) => {
       const editor: Editor = (this.$refs[`sp${i}`] as Vue[])[0] as Editor
-      const sp = this.contractTemplate.bigParagraphs[1].smallParagraphs[i]
       sp.contents = editor.invoke('getHtml')
       sp.seq = i
-    }
+    })
 
-    console.log(this.contractTemplate)
+    this.contractTemplate.bigParagraphs[0].contents = (this.$refs.contractContents as Editor).invoke('getHtml')
+    return this.contractTemplate
+  }
+
+  setContents (savedTemplate: ContractTemplate): void {
+    this.contractTemplate = savedTemplate
   }
 }
 </script>
