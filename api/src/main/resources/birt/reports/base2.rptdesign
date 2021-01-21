@@ -1,216 +1,259 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
-    <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201606072122</property>
+    <property name="createdBy">Eclipse BIRT Designer Version 4.8.0.v201806261756</property>
     <property name="units">in</property>
     <property name="iconFile">/templates/first_report.gif</property>
     <property name="cheatSheet">org.eclipse.birt.report.designer.ui.cheatsheet.firstreport</property>
+    <property name="layoutPreference">auto layout</property>
     <property name="bidiLayoutOrientation">ltr</property>
     <property name="imageDPI">96</property>
-    <template-parameter-definitions>
-        <template-parameter-definition name="NewTemplateParameterDefinition" id="28">
-            <property name="allowedType">Table</property>
-            <text-property name="description">Customer Listing</text-property>
-            <default>
-                <table id="29">
-                    <property name="width">100%</property>
-                    <property name="pageBreakInterval">50</property>
-                    <column id="49"/>
-                    <column id="50"/>
-                    <column id="51"/>
-                    <column id="52"/>
-                    <header>
-                        <row id="30">
-                            <cell id="31">
-                                <label id="32">
-                                    <property name="fontFamily">sans-serif</property>
-                                    <property name="fontWeight">bold</property>
-                                    <text-property name="text">Contact</text-property>
-                                </label>
-                            </cell>
-                            <cell id="33">
-                                <label id="34">
-                                    <property name="fontFamily">sans-serif</property>
-                                    <property name="fontWeight">bold</property>
-                                    <text-property name="text">First</text-property>
-                                </label>
-                            </cell>
-                            <cell id="35">
-                                <label id="36">
-                                    <property name="fontFamily">sans-serif</property>
-                                    <property name="fontWeight">bold</property>
-                                    <text-property name="text">Last</text-property>
-                                </label>
-                            </cell>
-                            <cell id="37">
-                                <label id="38">
-                                    <property name="fontFamily">sans-serif</property>
-                                    <property name="fontWeight">bold</property>
-                                    <text-property name="text">Phone</text-property>
-                                </label>
-                            </cell>
-                        </row>
-                    </header>
-                    <detail>
-                        <row id="39">
-                            <cell id="40"/>
-                            <cell id="41"/>
-                            <cell id="42"/>
-                            <cell id="43"/>
-                        </row>
-                    </detail>
-                    <footer>
-                        <row id="44">
-                            <cell id="45"/>
-                            <cell id="46"/>
-                            <cell id="47"/>
-                            <cell id="48"/>
-                        </row>
-                    </footer>
-                </table>
-            </default>
-        </template-parameter-definition>
-        <template-parameter-definition name="NewTemplateParameterDefinition1" id="78">
-            <property name="allowedType">Table</property>
-            <text-property name="description">Customer Listing Table</text-property>
-            <default>
-                <table id="79">
-                    <property name="width">100%</property>
-                    <property name="refTemplateParameter">NewTemplateParameterDefinition</property>
-                    <property name="pageBreakInterval">50</property>
-                    <column id="99"/>
-                    <column id="100"/>
-                    <column id="101"/>
-                    <column id="102"/>
-                    <header>
-                        <row id="80">
-                            <cell id="81">
-                                <label id="82">
-                                    <property name="fontFamily">sans-serif</property>
-                                    <property name="fontWeight">bold</property>
-                                    <text-property name="text">Contact</text-property>
-                                </label>
-                            </cell>
-                            <cell id="83">
-                                <label id="84">
-                                    <property name="fontFamily">sans-serif</property>
-                                    <property name="fontWeight">bold</property>
-                                    <text-property name="text">First</text-property>
-                                </label>
-                            </cell>
-                            <cell id="85">
-                                <label id="86">
-                                    <property name="fontFamily">sans-serif</property>
-                                    <property name="fontWeight">bold</property>
-                                    <text-property name="text">Last</text-property>
-                                </label>
-                            </cell>
-                            <cell id="87">
-                                <label id="88">
-                                    <property name="fontFamily">sans-serif</property>
-                                    <property name="fontWeight">bold</property>
-                                    <text-property name="text">Phone</text-property>
-                                </label>
-                            </cell>
-                        </row>
-                    </header>
-                    <detail>
-                        <row id="89">
-                            <cell id="90"/>
-                            <cell id="91"/>
-                            <cell id="92"/>
-                            <cell id="93"/>
-                        </row>
-                    </detail>
-                    <footer>
-                        <row id="94">
-                            <cell id="95"/>
-                            <cell id="96"/>
-                            <cell id="97"/>
-                            <cell id="98"/>
-                        </row>
-                    </footer>
-                </table>
-            </default>
-        </template-parameter-definition>
-        <template-parameter-definition name="NewTemplateParameterDefinition2" id="132">
-            <property name="allowedType">Table</property>
-            <text-property name="description">Customer Listing Table</text-property>
-            <default>
-                <table id="133">
-                    <property name="width">100%</property>
-                    <property name="refTemplateParameter">NewTemplateParameterDefinition1</property>
-                    <property name="pageBreakInterval">50</property>
-                    <column id="157"/>
-                    <column id="158"/>
-                    <column id="159"/>
-                    <column id="160"/>
-                    <header>
-                        <row id="134">
-                            <cell id="135">
-                                <label id="136">
-                                    <property name="fontFamily">sans-serif</property>
-                                    <property name="fontWeight">bold</property>
-                                    <text-property name="text">Contact</text-property>
-                                </label>
-                            </cell>
-                            <cell id="137">
-                                <label id="138">
-                                    <property name="fontFamily">sans-serif</property>
-                                    <property name="fontWeight">bold</property>
-                                    <text-property name="text">First</text-property>
-                                </label>
-                            </cell>
-                            <cell id="139">
-                                <label id="140">
-                                    <property name="fontFamily">sans-serif</property>
-                                    <property name="fontWeight">bold</property>
-                                    <text-property name="text">Last</text-property>
-                                </label>
-                            </cell>
-                            <cell id="141">
-                                <label id="142">
-                                    <property name="fontFamily">sans-serif</property>
-                                    <property name="fontWeight">bold</property>
-                                    <text-property name="text">Phone</text-property>
-                                </label>
-                            </cell>
-                        </row>
-                    </header>
-                    <detail>
-                        <row id="143">
-                            <cell id="144">
-                                <data id="145"/>
-                            </cell>
-                            <cell id="146">
-                                <data id="147"/>
-                            </cell>
-                            <cell id="148">
-                                <data id="149"/>
-                            </cell>
-                            <cell id="150">
-                                <data id="151"/>
-                            </cell>
-                        </row>
-                    </detail>
-                    <footer>
-                        <row id="152">
-                            <cell id="153"/>
-                            <cell id="154"/>
-                            <cell id="155"/>
-                            <cell id="156"/>
-                        </row>
-                    </footer>
-                </table>
-            </default>
-        </template-parameter-definition>
-        <template-parameter-definition name="NewTemplateParameterDefinition3" id="191">
-            <property name="allowedType">Data</property>
-            <text-property name="description">Contact</text-property>
-            <default>
-                <data id="192"/>
-            </default>
-        </template-parameter-definition>
-    </template-parameter-definitions>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="Data Source" id="573">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledContentBidiFormatStr</name>
+                </ex-property>
+            </list-property>
+            <property name="odaDriverClass">com.mysql.jdbc.Driver</property>
+            <property name="odaURL">jdbc:mysql://localhost:3306/test</property>
+            <property name="odaUser">root</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">emphanRtZGtkbA==</encrypted-property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Data Set" id="574">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">test_id</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">test_id</text-property>
+                    <text-property name="heading">test_id</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">test_company</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">test_company</text-property>
+                    <text-property name="heading">test_company</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">test_ceo</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">test_ceo</text-property>
+                    <text-property name="heading">test_ceo</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">test_name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">test_name</text-property>
+                    <text-property name="heading">test_name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">test_date</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">test_date</text-property>
+                    <text-property name="heading">test_date</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters"/>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">test_id</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">test_company</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">test_ceo</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">test_name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">test_date</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">test_id</property>
+                    <property name="nativeName">test_id</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">test_company</property>
+                    <property name="nativeName">test_company</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">test_ceo</property>
+                    <property name="nativeName">test_ceo</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">test_name</property>
+                    <property name="nativeName">test_name</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">test_date</property>
+                    <property name="nativeName">test_date</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select *
+from test_table
+where test_id='1']]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>test_id</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>test_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>test_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>test_company</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>45</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>test_company</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>test_company</design:label>
+            <design:formattingHints>
+              <design:displaySize>45</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>test_ceo</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>45</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>test_ceo</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>test_ceo</design:label>
+            <design:formattingHints>
+              <design:displaySize>45</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>test_name</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>45</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>test_name</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>test_name</design:label>
+            <design:formattingHints>
+              <design:displaySize>45</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>test_date</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>45</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>test_date</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>test_date</design:label>
+            <design:formattingHints>
+              <design:displaySize>45</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+    </data-sets>
     <styles>
         <style name="report" id="110">
             <property name="fontFamily">sans-serif</property>
@@ -230,67 +273,307 @@
     <body>
         <label id="245">
             <property name="fontFamily">sans-serif</property>
-            <property name="fontSize">x-large</property>
+            <property name="fontSize">24pt</property>
             <property name="fontWeight">bold</property>
             <property name="textAlign">center</property>
-            <text-property name="text">Customer Listing</text-property>
+            <property name="whiteSpace">normal</property>
+            <text-property name="text">근로계약서</text-property>
         </label>
-        <table id="163">
-            <property name="width">100%</property>
-            <property name="refTemplateParameter">NewTemplateParameterDefinition2</property>
-            <property name="pageBreakInterval">50</property>
-            <column id="187"/>
-            <column id="188"/>
-            <column id="189"/>
-            <column id="190"/>
-            <header>
-                <row id="164">
-                    <cell id="165">
-                        <label id="166">
-                            <property name="fontFamily">sans-serif</property>
-                            <property name="fontWeight">bold</property>
-                            <text-property name="text">Customer</text-property>
-                        </label>
-                    </cell>
-                    <cell id="167">
-                        <label id="168">
-                            <property name="fontFamily">sans-serif</property>
-                            <property name="fontWeight">bold</property>
-                            <text-property name="text">First</text-property>
-                        </label>
-                    </cell>
-                    <cell id="169">
-                        <label id="170">
-                            <property name="fontFamily">sans-serif</property>
-                            <property name="fontWeight">bold</property>
-                            <text-property name="text">Last</text-property>
-                        </label>
-                    </cell>
-                    <cell id="171">
-                        <label id="172">
-                            <property name="fontFamily">sans-serif</property>
-                            <property name="fontWeight">bold</property>
-                            <text-property name="text">Phone</text-property>
-                        </label>
-                    </cell>
-                </row>
-            </header>
-            <detail>
-                <row id="173">
-                    <cell id="174"/>
-                    <cell id="176"/>
-                    <cell id="178"/>
-                    <cell id="180"/>
-                </row>
-            </detail>
-            <footer>
-                <row id="182">
-                    <cell id="183"/>
-                    <cell id="184"/>
-                    <cell id="185"/>
-                    <cell id="186"/>
-                </row>
-            </footer>
-        </table>
+        <label id="247">
+            <property name="fontSize">10pt</property>
+            <text-property name="text">1. 당사자 표시</text-property>
+        </label>
+        <grid id="435">
+            <column id="436"/>
+            <column id="437"/>
+            <column id="438"/>
+            <column id="439"/>
+            <column id="440"/>
+            <row id="441">
+                <cell id="442">
+                    <text id="453">
+                        <property name="contentType">auto</property>
+                        <text-property name="content"><![CDATA[갑(사용자)]]></text-property>
+                    </text>
+                </cell>
+                <cell id="443">
+                    <text id="454">
+                        <property name="contentType">auto</property>
+                        <text-property name="content"><![CDATA[사업장명]]></text-property>
+                    </text>
+                </cell>
+                <cell id="444">
+                    <data id="578">
+                        <property name="dataSet">Data Set</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">test_company</property>
+                                <text-property name="displayName">test_company</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["test_company"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">false</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">test_company</property>
+                    </data>
+                </cell>
+                <cell id="445">
+                    <text id="456">
+                        <property name="contentType">auto</property>
+                        <text-property name="content"><![CDATA[대표이사]]></text-property>
+                    </text>
+                </cell>
+                <cell id="446">
+                    <data id="576">
+                        <property name="dataSet">Data Set</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">test_ceo</property>
+                                <text-property name="displayName">test_ceo</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["test_ceo"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">test_ceo</property>
+                    </data>
+                </cell>
+            </row>
+            <row id="447">
+                <cell id="448">
+                    <text id="458">
+                        <property name="contentType">auto</property>
+                        <text-property name="content"><![CDATA[을(근로자)]]></text-property>
+                    </text>
+                </cell>
+                <cell id="449">
+                    <text id="459">
+                        <property name="contentType">auto</property>
+                        <text-property name="content"><![CDATA[성    명]]></text-property>
+                    </text>
+                </cell>
+                <cell id="450">
+                    <data id="577">
+                        <property name="dataSet">Data Set</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">test_name</property>
+                                <text-property name="displayName">test_name</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["test_name"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">test_name</property>
+                    </data>
+                </cell>
+                <cell id="451">
+                    <text id="461">
+                        <property name="contentType">auto</property>
+                        <text-property name="content"><![CDATA[입사일]]></text-property>
+                    </text>
+                </cell>
+                <cell id="452">
+                    <data id="579">
+                        <property name="dataSet">Data Set</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">test_date</property>
+                                <text-property name="displayName">test_date</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["test_date"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">test_date</property>
+                    </data>
+                </cell>
+            </row>
+        </grid>
+        <label id="463">
+            <text-property name="text">2. 근로계약기간</text-property>
+        </label>
+        <grid id="464">
+            <column id="465"/>
+            <column id="466"/>
+            <column id="467"/>
+            <row id="468">
+                <cell id="469">
+                    <text id="472">
+                        <property name="contentType">auto</property>
+                        <text-property name="content"><![CDATA[1) 본 계약서상 연봉적용 기간은]]></text-property>
+                    </text>
+                </cell>
+                <cell id="470">
+                    <text id="473">
+                        <property name="contentType">auto</property>
+                        <text-property name="content"><![CDATA[2020년 4월 1일 ]]></text-property>
+                    </text>
+                </cell>
+                <cell id="471">
+                    <text id="474">
+                        <property name="contentType">auto</property>
+                        <text-property name="content"><![CDATA[부터로 한다.]]></text-property>
+                    </text>
+                </cell>
+            </row>
+        </grid>
+        <data id="619">
+            <property name="dataSet">Data Set</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">test_company</property>
+                    <text-property name="displayName">test_company</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["test_company"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <property name="resultSetColumn">test_company</property>
+        </data>
+        <label id="475">
+            <text-property name="text">3. 근로시간 및 휴게시간</text-property>
+        </label>
+        <label id="477">
+            <text-property name="text">  1) 시업 및 종업시각</text-property>
+        </label>
+        <grid id="508">
+            <column id="509"/>
+            <column id="510"/>
+            <column id="511"/>
+            <column id="512"/>
+            <row id="513">
+                <cell id="514">
+                    <label id="531">
+                        <text-property name="text">구분</text-property>
+                    </label>
+                </cell>
+                <cell id="515">
+                    <text id="534">
+                        <property name="contentType">auto</property>
+                        <text-property name="content"><![CDATA[주 5일]]></text-property>
+                    </text>
+                </cell>
+                <cell id="516">
+                    <text id="535">
+                        <property name="contentType">auto</property>
+                        <text-property name="content"><![CDATA[토요일]]></text-property>
+                    </text>
+                </cell>
+                <cell id="517">
+                    <text id="536">
+                        <property name="contentType">auto</property>
+                        <text-property name="content"><![CDATA[일요일]]></text-property>
+                    </text>
+                </cell>
+            </row>
+            <row id="518">
+                <cell id="519">
+                    <label id="532">
+                        <text-property name="text">시업과 종업시각</text-property>
+                    </label>
+                </cell>
+                <cell id="520">
+                    <text id="537">
+                        <property name="contentType">auto</property>
+                        <text-property name="content"><![CDATA[09:00 ~ 18:00]]></text-property>
+                    </text>
+                </cell>
+                <cell id="521">
+                    <property name="colSpan">1</property>
+                    <property name="rowSpan">2</property>
+                    <text id="539">
+                        <property name="textAlign">left</property>
+                        <property name="contentType">auto</property>
+                        <text-property name="content"><![CDATA[무급휴무일]]></text-property>
+                    </text>
+                    <data id="615">
+                        <property name="dataSet">Data Set</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">test_ceo</property>
+                                <text-property name="displayName">test_ceo</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["test_ceo"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">test_ceo</property>
+                    </data>
+                </cell>
+                <cell id="522">
+                    <property name="colSpan">1</property>
+                    <property name="rowSpan">2</property>
+                    <text id="540">
+                        <property name="contentType">auto</property>
+                        <text-property name="content"><![CDATA[유급휴일(주휴일)]]></text-property>
+                    </text>
+                    <data id="616">
+                        <property name="dataSet">Data Set</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">test_company</property>
+                                <text-property name="displayName">test_company</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["test_company"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">test_company</property>
+                    </data>
+                </cell>
+            </row>
+            <row id="523">
+                <cell id="524">
+                    <label id="533">
+                        <text-property name="text">휴게시간</text-property>
+                    </label>
+                </cell>
+                <cell id="525">
+                    <text id="538">
+                        <property name="contentType">auto</property>
+                        <text-property name="content"><![CDATA[12:00 ~ 13:00]]></text-property>
+                    </text>
+                </cell>
+            </row>
+        </grid>
+        <text id="541">
+            <property name="contentType">auto</property>
+            <text-property name="content"><![CDATA[* 업무의 특성 상 업무 수행 방법을 근로자의 재량에 위임할 필요가 있는 업무는 근로자 대표와의 서면 합의로 
+1일 8시간, 1주 40시간을 근무한 것으로 간주한다.]]></text-property>
+        </text>
+        <label id="542">
+            <text-property name="text">4. 근무내용과 근무장소</text-property>
+        </label>
+        <grid id="551">
+            <column id="552"/>
+            <column id="553"/>
+            <row id="554">
+                <cell id="555">
+                    <label id="560">
+                        <text-property name="text">1) 근무내용 : </text-property>
+                    </label>
+                </cell>
+                <cell id="556">
+                    <text id="563">
+                        <property name="contentType">auto</property>
+                        <text-property name="content"><![CDATA[영업 본부 사장]]></text-property>
+                    </text>
+                </cell>
+            </row>
+            <row id="557">
+                <cell id="558">
+                    <label id="561">
+                        <text-property name="text">2) 근무장소 : </text-property>
+                    </label>
+                </cell>
+                <cell id="559">
+                    <text id="562">
+                        <property name="contentType">auto</property>
+                        <text-property name="content"><![CDATA["갑"의 사업장 내, 단 업무상 필요한 경우 "갑"은 "을"의 근무장소를 변경할 수 있다.]]></text-property>
+                    </text>
+                </cell>
+            </row>
+        </grid>
+        <label id="564">
+            <text-property name="text">5. 임금내역</text-property>
+        </label>
+        <label id="565">
+            <text-property name="text">1) 연봉내역</text-property>
+        </label>
     </body>
 </report>
