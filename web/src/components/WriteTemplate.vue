@@ -1,58 +1,47 @@
 <template>
   <v-card>
-    <v-toolbar
-      dark
-      color="primary"
-    >
-      <v-btn
-        icon
-        dark
-        @click="$emit('close-dialog')"
-      >
-        <v-icon>mdi-close</v-icon>
-      </v-btn>
-      <v-toolbar-title>템플릿 등록</v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-toolbar-items>
+    <v-stepper class="pa-2" v-model="e1">
+      <v-app-bar fixed dark color="primary">
         <v-btn
+          icon
           dark
-          text
           @click="$emit('close-dialog')"
         >
-          Save
+          <v-icon>mdi-close</v-icon>
         </v-btn>
-      </v-toolbar-items>
-    </v-toolbar>
-    <v-card-text class="pa-0">
-      <v-stepper class="pa-2" v-model="e1">
-        <v-stepper-header>
+        <v-app-bar-title>템플릿 등록</v-app-bar-title>
+        <v-spacer></v-spacer>
+          <v-btn
+            dark
+            text
+            @click="$emit('close-dialog')"
+          >
+            Save
+          </v-btn>
+      </v-app-bar>
+        <v-stepper-header class="mt-16">
           <v-stepper-step
             :complete="e1 > 1"
             step="1"
           >
             포멧 선택
           </v-stepper-step>
-
           <v-divider></v-divider>
-
           <v-stepper-step
             :complete="e1 > 2"
             step="2"
           >
             내용 입력
           </v-stepper-step>
-
           <v-divider></v-divider>
-
           <v-stepper-step step="3">
             미리보기 및 완료
           </v-stepper-step>
         </v-stepper-header>
-
         <v-stepper-items>
           <!-- 1. 포멧 선택 -->
           <v-stepper-content step="1" class="py-2 px-0">
-            <v-carousel v-model="selectedReportIndex">
+            <v-carousel :height=carouselHeight v-model="selectedReportIndex">
               <v-carousel-item
                 v-for="(d, i) in reports"
                 :key="i"
@@ -74,28 +63,34 @@
                 </v-sheet>
               </v-carousel-item>
             </v-carousel>
-            <div class="mt-2">
+            <v-footer
+              elevation="3"
+              fixed
+              >
+            <div>
               <v-btn
                 color="primary"
                 @click="step1()"
               >
                 선택
               </v-btn>
-
               <v-btn text
                 @click="cancel()"
               >
                 취소
               </v-btn>
             </div>
+            </v-footer>
           </v-stepper-content>
 
           <!-- 2. 내용 입력 -->
           <v-stepper-content step="2">
-            <component ref="contents" v-bind:is="selectedComponent">
+            <component class="mb-10" ref="contents" v-bind:is="selectedComponent">
             </component>
-
-            <div class="mt-2">
+            <v-footer
+            fixed
+            elevation="3"
+            >
               <v-btn
                 color="primary"
                 @click="saveContents()"
@@ -108,7 +103,7 @@
               >
                 취소
               </v-btn>
-            </div>
+            </v-footer>
           </v-stepper-content>
 
           <!-- 3. 미리보기 및 완료 -->
@@ -116,7 +111,7 @@
             <v-sheet
               color="grey lighten-4"
               height="100%"
-              class="d-flex justify-center"
+              class="d-flex justify-center mb-10"
             >
               <div style="width:70%;background-color: white;">
                 <pdf
@@ -127,23 +122,26 @@
                 ></pdf>
               </div>
             </v-sheet>
-            <v-btn
-              color="primary"
-              @click="e1 = 1"
-            >
-              확정
-            </v-btn>
+            <v-footer
+              fixed
+              >
+              <v-btn
+                color="primary"
+                @click="e1 = 1"
+              >
+                확정
+              </v-btn>
 
-            <v-btn text @click="cancel()">
-              취소
-            </v-btn>
-            <v-btn text color="lime" :href="pdfHref" target="_blank" download>
-              Download
-            </v-btn>
+              <v-btn text @click="cancel()">
+                취소
+              </v-btn>
+              <v-btn text color="lime" :href="pdfHref" target="_blank" download>
+                Download
+              </v-btn>
+            </v-footer>
           </v-stepper-content>
         </v-stepper-items>
       </v-stepper>
-    </v-card-text>
   </v-card>
 </template>
 
@@ -179,6 +177,7 @@ export default class WriteTemplate extends Vue {
   pdfHref = ''
   pdfSrc = pdf.createLoadingTask('http://localhost:8080/report/base3?output=pdf&templateId=3')
   numPages = 3
+  carouselHeight = window.screen.height - 350;
 
   step1 () {
     this.e1 = 2

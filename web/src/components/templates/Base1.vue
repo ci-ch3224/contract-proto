@@ -4,7 +4,7 @@
     <div>
       <editor :initialValue="editorText"
               initialEditType="wysiwyg"
-              height="500px"
+              height="450px"
               ref="toastuiEditor"
       />
     </div>
