@@ -106,12 +106,13 @@
 
           <!-- 2. 내용 입력 -->
           <v-stepper-content step="2">
-            <component ref="contents" v-bind:is="selectedComponent" templateId="3">
+            <component ref="contents" v-bind:is="selectedComponent">
             </component>
 
             <div class="mt-2">
               <v-btn
                 color="primary"
+                @click="saveContents()"
               >
                 본문저장
               </v-btn>
@@ -139,7 +140,7 @@
               color="primary"
               @click="e1 = 1"
             >
-              확정
+              완료
             </v-btn>
 
             <v-btn text @click="cancel()">
@@ -160,7 +161,9 @@ import { Component, Vue } from 'vue-property-decorator'
 import { Editor } from '@toast-ui/vue-editor'
 import pdf from 'vue-pdf'
 import { ContractTemplate } from '@/model/ContractTemplate'
+import { Contract } from '@/model/Contract'
 import { contractTemplateService } from '@/service/ContractTemplateService'
+import { contractService } from '@/service/ContractService'
 import Base1 from '@/components/contracts/Base1.vue'
 import Base2 from '@/components/contracts/Base2.vue'
 import Base3 from '@/components/contracts/Base3.vue'
@@ -193,6 +196,10 @@ export default class WriteContract extends Vue {
   step1 () {
     this.e1 = 2
     this.selectedComponent = this.selectedTemplate.templateName
+    // component에 template -> contract로 변환하여 전달
+    contractTemplateService.getOne(this.selectedTemplate.id).then(res => {
+      (this.$refs.contents as any).setContents(Contract.of(res.data))
+    })
   }
 
   selectTemplate (template: Template) {
@@ -215,6 +222,23 @@ export default class WriteContract extends Vue {
         })
       })
     })
+  }
+
+  saveContents () {
+    const result = (this.$refs.contents as any).getContents()
+    contractService.save(result)
+      .then(({ data: savedContract }) => {
+        (this.$refs.contents as any).setContents(savedContract)
+        this.e1 = 3
+        // this.pdfHref = `http://localhost:8080/report/${this.selectedTemplate.templateName}?output=pdf&templateId=${savedContract.id}`
+        // this.pdfSrc = pdf.createLoadingTask(this.pdfHref)
+        // this.pdfSrc.promise.then((a: any) => {
+        //   this.numPages = a.numPages
+        // })
+      })
+      .catch(() => {
+        console.log('error')
+      })
   }
 }
 </script>

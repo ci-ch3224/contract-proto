@@ -4,12 +4,12 @@
       <v-card-title>표지</v-card-title>
       <v-card-text>
         <v-text-field
-          v-model="contractTemplate.title"
+          v-model="contract.title"
           label="계약서명"
         ></v-text-field>
         <v-text-field
           label="소제목"
-          v-model="contractTemplate.subTitle"
+          v-model="contract.subTitle"
         ></v-text-field>
       </v-card-text>
     </v-card>
@@ -19,6 +19,7 @@
         <editor initialEditType="wysiwyg"
                 height="500px"
                 ref="contractContents"
+                :initialValue="contract.bigParagraphs[0].contents"
         />
       </v-card-text>
     </v-card>
@@ -27,7 +28,7 @@
       <v-card-text>
         <v-text-field
           label="약관명"
-          v-model="contractTemplate.bigParagraphs[1].title"
+          v-model="contract.bigParagraphs[1].title"
         ></v-text-field>
         <v-card-actions>
           <v-btn
@@ -38,17 +39,10 @@
           >
             추가
           </v-btn>
-          <v-btn
-            outlined
-            rounded
-            @click="getContents()"
-          >
-            test
-          </v-btn>
         </v-card-actions>
         <v-card-text>
           <v-card
-            v-for="(item, i) in contractTemplate.bigParagraphs[1].smallParagraphs"
+            v-for="(item, i) in contract.bigParagraphs[1].smallParagraphs"
             :key="i"
             class="mt-2"
           >
@@ -72,6 +66,7 @@
             <v-card-text>
               <editor initialEditType="wysiwyg"
                       height="150px"
+                      :initialValue="item.contents"
                       :ref="'sp' + i"
               />
             </v-card-text>
@@ -90,7 +85,7 @@ import '@toast-ui/editor/dist/toastui-editor-viewer.css'
 import { Component, Vue, Emit, Prop } from 'vue-property-decorator'
 import { Editor } from '@toast-ui/vue-editor'
 import { ContractParagraph } from '@/model/ContractParagraph'
-import { ContractTemplate } from '@/model/ContractTemplate'
+import { Contract } from '@/model/Contract'
 
 @Component({
   components: {
@@ -98,40 +93,32 @@ import { ContractTemplate } from '@/model/ContractTemplate'
   }
 })
 export default class Base3 extends Vue {
-  @Prop() templateId?: string
-  contractTemplate: ContractTemplate = new ContractTemplate('base3')
-
-  constructor () {
-    super()
-    console.log(`-->>> ${this.templateId}`)
-    this.contractTemplate.addParagraphs(new ContractParagraph()) // 계약본문
-    this.contractTemplate.addParagraphs(new ContractParagraph()) // 약관
-  }
+  contract: Contract = new Contract()
 
   addArticle () {
-    this.contractTemplate.bigParagraphs[1].addParagraphs(new ContractParagraph())
+    this.contract.bigParagraphs[1].addParagraphs(new ContractParagraph())
   }
 
   deleteArticle (index: number) {
-    this.contractTemplate.bigParagraphs[1].removeParagraph(index)
+    this.contract.bigParagraphs[1].removeParagraph(index)
   }
 
   @Emit('getContents')
-  getContents (): ContractTemplate {
-    this.contractTemplate.bigParagraphs[0].seq = 0
-    this.contractTemplate.bigParagraphs[1].seq = 1
-    this.contractTemplate.bigParagraphs[1].smallParagraphs.forEach((sp, i) => {
+  getContents (): Contract {
+    this.contract.bigParagraphs[0].seq = 0
+    this.contract.bigParagraphs[1].seq = 1
+    this.contract.bigParagraphs[1].smallParagraphs.forEach((sp, i) => {
       const editor: Editor = (this.$refs[`sp${i}`] as Vue[])[0] as Editor
       sp.contents = editor.invoke('getHtml')
       sp.seq = i
     })
 
-    this.contractTemplate.bigParagraphs[0].contents = (this.$refs.contractContents as Editor).invoke('getHtml')
-    return this.contractTemplate
+    this.contract.bigParagraphs[0].contents = (this.$refs.contractContents as Editor).invoke('getHtml')
+    return this.contract
   }
 
-  setContents (savedTemplate: ContractTemplate): void {
-    this.contractTemplate = savedTemplate
+  setContents (contract: Contract): void {
+    this.contract = contract
   }
 }
 </script>
