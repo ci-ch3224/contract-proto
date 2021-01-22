@@ -72,12 +72,10 @@ export default class Templates extends Vue {
   }
 
   search (): void {
-    this.pageable.page--
-    contractTemplateService.getPage(this.pageable).then(({ data: list }) => {
+    contractTemplateService.getPage(this.pageable).then(({ data: responseData }) => {
       const grid = (this.$refs.tuiGrid as Grid)
-      grid.invoke('resetData', list.content)
-      this.pageable.totalPages = list.totalPages
-      this.pageable.page = list.number + 1
+      grid.invoke('resetData', responseData.content)
+      this.pageable.setDataPage(responseData)
     })
   }
 

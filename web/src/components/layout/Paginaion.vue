@@ -10,7 +10,7 @@
     </v-col>
     <v-col cols="11">
       <v-pagination
-        v-model="pageable.page"
+        v-model="pageable.currentPage"
         :length="pageable.totalPages"
         total-visible="10"
         @input="execute"
@@ -25,7 +25,7 @@ import { Pageable } from '@/model/Pageable'
 
 @Component
 export default class Pagination extends Vue {
-  @Prop() pageable!: Pageable;
+  @Prop() pageable!: Pageable
   @Prop() executeFunction!: Function
 
   execute (): void {
@@ -33,7 +33,7 @@ export default class Pagination extends Vue {
   }
 
   changePageSize (): void {
-    this.pageable.page = 1
+    this.pageable.resetPage()
     this.execute()
   }
 }
