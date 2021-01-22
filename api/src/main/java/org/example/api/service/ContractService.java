@@ -31,6 +31,7 @@ public class ContractService {
 
     public ContractDto save(ContractDto dto) {
         Contract entity = dto.toEntity();
+        // 갑, 을, 계약일 넣기
         contractRepository.save(entity);
         return ContractDto.of(entity);
     }

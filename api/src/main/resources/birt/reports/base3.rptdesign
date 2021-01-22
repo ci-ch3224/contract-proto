@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
     <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201606072122</property>
+    <list-property name="propertyBindings">
+        <structure>
+            <property name="name">queryText</property>
+            <property name="id">134</property>
+        </structure>
+        <structure>
+            <property name="name">queryTimeOut</property>
+            <property name="id">134</property>
+        </structure>
+        <structure>
+            <property name="name">rowFetchSize</property>
+            <property name="id">134</property>
+        </structure>
+        <structure>
+            <property name="name">queryText</property>
+            <property name="id">133</property>
+        </structure>
+        <structure>
+            <property name="name">queryTimeOut</property>
+            <property name="id">133</property>
+        </structure>
+        <structure>
+            <property name="name">rowFetchSize</property>
+            <property name="id">133</property>
+        </structure>
+    </list-property>
     <property name="units">in</property>
     <property name="iconFile">/templates/blank_report.gif</property>
     <property name="layoutPreference">fixed layout</property>
@@ -17,6 +43,22 @@
             </simple-property-list>
             <list-property name="selectionList"/>
             <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="contractId" id="149">
+            <property name="valueType">static</property>
+            <property name="isRequired">false</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant"></value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="concealValue">false</property>
             <property name="controlType">text-box</property>
             <structure name="format">
                 <property name="category">Unformatted</property>
@@ -233,22 +275,22 @@ from company]]></xml-property>
                     <text-property name="heading">id</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">sub_title</property>
-                    <property name="analysis">dimension</property>
-                    <text-property name="displayName">sub_title</text-property>
-                    <text-property name="heading">sub_title</text-property>
-                </structure>
-                <structure>
                     <property name="columnName">title</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">title</text-property>
                     <text-property name="heading">title</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">template_name</property>
+                    <property name="columnName">sub_title</property>
                     <property name="analysis">dimension</property>
-                    <text-property name="displayName">template_name</text-property>
-                    <text-property name="heading">template_name</text-property>
+                    <text-property name="displayName">sub_title</text-property>
+                    <text-property name="heading">sub_title</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">contract_date</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">contract_date</text-property>
+                    <text-property name="heading">contract_date</text-property>
                 </structure>
             </list-property>
             <list-property name="parameters">
@@ -262,6 +304,16 @@ from company]]></xml-property>
                     <property name="isInput">true</property>
                     <property name="isOutput">false</property>
                 </structure>
+                <structure>
+                    <property name="name">contractId</property>
+                    <property name="paramName">contractId</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">-1</property>
+                    <property name="position">2</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
             </list-property>
             <structure name="cachedMetaData">
                 <list-property name="resultSet">
@@ -272,17 +324,17 @@ from company]]></xml-property>
                     </structure>
                     <structure>
                         <property name="position">2</property>
-                        <property name="name">sub_title</property>
-                        <property name="dataType">string</property>
-                    </structure>
-                    <structure>
-                        <property name="position">3</property>
                         <property name="name">title</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
+                        <property name="position">3</property>
+                        <property name="name">sub_title</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
                         <property name="position">4</property>
-                        <property name="name">template_name</property>
+                        <property name="name">contract_date</property>
                         <property name="dataType">string</property>
                     </structure>
                 </list-property>
@@ -298,48 +350,36 @@ from company]]></xml-property>
                 </structure>
                 <structure>
                     <property name="position">2</property>
-                    <property name="name">sub_title</property>
-                    <property name="nativeName">sub_title</property>
-                    <property name="dataType">string</property>
-                    <property name="nativeDataType">12</property>
-                </structure>
-                <structure>
-                    <property name="position">3</property>
                     <property name="name">title</property>
                     <property name="nativeName">title</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
+                    <property name="position">3</property>
+                    <property name="name">sub_title</property>
+                    <property name="nativeName">sub_title</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
                     <property name="position">4</property>
-                    <property name="name">template_name</property>
-                    <property name="nativeName">template_name</property>
+                    <property name="name">contract_date</property>
+                    <property name="nativeName">contract_date</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
             </list-property>
-            <xml-property name="queryText"><![CDATA[select * from contract_template a
+            <xml-property name="queryText"><![CDATA[select a.id, a.title, a.sub_title, date_format(sysdate(), '%Y년 %m월 %d일') contract_date
+from contract_template a
+where a.id = ?
+union all
+select a.id, a.title, a.sub_title, date_format(sysdate(), '%Y년 %m월 %d일') contract_date
+from contract a
 where a.id = ?]]></xml-property>
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
   <Version>2.0</Version>
-  <DataSetParameters>
-    <parameter>
-      <design:ParameterDefinition>
-        <design:inOutMode>In</design:inOutMode>
-        <design:attributes>
-          <design:identifier>
-            <design:name></design:name>
-            <design:position>1</design:position>
-          </design:identifier>
-          <design:nativeDataTypeCode>-1</design:nativeDataTypeCode>
-          <design:precision>0</design:precision>
-          <design:scale>0</design:scale>
-          <design:nullability>Unknown</design:nullability>
-        </design:attributes>
-      </design:ParameterDefinition>
-    </parameter>
-  </DataSetParameters>
   <design:ResultSets derivedMetaData="true">
     <design:resultSetDefinitions>
       <design:resultSetColumns>
@@ -471,6 +511,16 @@ where a.id = ?]]></xml-property>
                     <property name="isInput">true</property>
                     <property name="isOutput">false</property>
                 </structure>
+                <structure>
+                    <property name="name">contractId</property>
+                    <property name="paramName">contractId</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">-1</property>
+                    <property name="position">2</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
             </list-property>
             <structure name="cachedMetaData">
                 <list-property name="resultSet">
@@ -527,30 +577,20 @@ where a.id = ?]]></xml-property>
                     <property name="nativeDataType">12</property>
                 </structure>
             </list-property>
-            <xml-property name="queryText"><![CDATA[select b.* from contract_template_paragraph a, contract_paragraph b
+            <xml-property name="queryText"><![CDATA[select b.id, b.contents, b.seq, b.title
+from contract_template_paragraph a, contract_paragraph b
 where a.contract_template_id = ?
+and a.contract_paragraph_id = b.id
+and b.seq = 0
+union all
+select b.id, b.contents, b.seq, b.title
+from contract_contract_paragraph a, contract_paragraph b
+where a.contract_id = ?
 and a.contract_paragraph_id = b.id
 and b.seq = 0]]></xml-property>
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
   <Version>2.0</Version>
-  <DataSetParameters>
-    <parameter>
-      <design:ParameterDefinition>
-        <design:inOutMode>In</design:inOutMode>
-        <design:attributes>
-          <design:identifier>
-            <design:name></design:name>
-            <design:position>1</design:position>
-          </design:identifier>
-          <design:nativeDataTypeCode>-1</design:nativeDataTypeCode>
-          <design:precision>0</design:precision>
-          <design:scale>0</design:scale>
-          <design:nullability>Unknown</design:nullability>
-        </design:attributes>
-      </design:ParameterDefinition>
-    </parameter>
-  </DataSetParameters>
   <design:ResultSets derivedMetaData="true">
     <design:resultSetDefinitions>
       <design:resultSetColumns>
@@ -653,6 +693,12 @@ and b.seq = 0]]></xml-property>
                     <text-property name="heading">id</text-property>
                 </structure>
                 <structure>
+                    <property name="columnName">title</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">title</text-property>
+                    <text-property name="heading">title</text-property>
+                </structure>
+                <structure>
                     <property name="columnName">contents</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">contents</text-property>
@@ -663,12 +709,6 @@ and b.seq = 0]]></xml-property>
                     <property name="analysis">measure</property>
                     <text-property name="displayName">seq</text-property>
                     <text-property name="heading">seq</text-property>
-                </structure>
-                <structure>
-                    <property name="columnName">title</property>
-                    <property name="analysis">dimension</property>
-                    <text-property name="displayName">title</text-property>
-                    <text-property name="heading">title</text-property>
                 </structure>
             </list-property>
             <list-property name="parameters">
@@ -682,6 +722,16 @@ and b.seq = 0]]></xml-property>
                     <property name="isInput">true</property>
                     <property name="isOutput">false</property>
                 </structure>
+                <structure>
+                    <property name="name">contractId</property>
+                    <property name="paramName">contractId</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">-1</property>
+                    <property name="position">2</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
             </list-property>
             <structure name="cachedMetaData">
                 <list-property name="resultSet">
@@ -692,18 +742,18 @@ and b.seq = 0]]></xml-property>
                     </structure>
                     <structure>
                         <property name="position">2</property>
-                        <property name="name">contents</property>
+                        <property name="name">title</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">3</property>
-                        <property name="name">seq</property>
-                        <property name="dataType">integer</property>
+                        <property name="name">contents</property>
+                        <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">4</property>
-                        <property name="name">title</property>
-                        <property name="dataType">string</property>
+                        <property name="name">seq</property>
+                        <property name="dataType">integer</property>
                     </structure>
                 </list-property>
             </structure>
@@ -718,28 +768,35 @@ and b.seq = 0]]></xml-property>
                 </structure>
                 <structure>
                     <property name="position">2</property>
+                    <property name="name">title</property>
+                    <property name="nativeName">title</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
                     <property name="name">contents</property>
                     <property name="nativeName">contents</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
-                    <property name="position">3</property>
+                    <property name="position">4</property>
                     <property name="name">seq</property>
                     <property name="nativeName">seq</property>
                     <property name="dataType">integer</property>
                     <property name="nativeDataType">4</property>
                 </structure>
-                <structure>
-                    <property name="position">4</property>
-                    <property name="name">title</property>
-                    <property name="nativeName">title</property>
-                    <property name="dataType">string</property>
-                    <property name="nativeDataType">12</property>
-                </structure>
             </list-property>
-            <xml-property name="queryText"><![CDATA[select b.* from contract_template_paragraph a, contract_paragraph b
+            <xml-property name="queryText"><![CDATA[select b.id, b.title, b.contents, b.seq
+from contract_template_paragraph a, contract_paragraph b
 where a.contract_template_id = ?
+and a.contract_paragraph_id = b.id
+and b.seq = 1
+union all
+select b.id, b.title, b.contents, b.seq
+from contract_contract_paragraph a, contract_paragraph b
+where a.contract_id = ?
 and a.contract_paragraph_id = b.id
 and b.seq = 1]]></xml-property>
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
@@ -752,7 +809,7 @@ and b.seq = 1]]></xml-property>
         <design:attributes>
           <design:identifier>
             <design:name></design:name>
-            <design:position>1</design:position>
+            <design:position>2</design:position>
           </design:identifier>
           <design:nativeDataTypeCode>-1</design:nativeDataTypeCode>
           <design:precision>0</design:precision>
@@ -893,6 +950,16 @@ and b.seq = 1]]></xml-property>
                     <property name="isInput">true</property>
                     <property name="isOutput">false</property>
                 </structure>
+                <structure>
+                    <property name="name">contractId</property>
+                    <property name="paramName">contractId</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">-1</property>
+                    <property name="position">2</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
             </list-property>
             <structure name="cachedMetaData">
                 <list-property name="resultSet">
@@ -949,8 +1016,17 @@ and b.seq = 1]]></xml-property>
                     <property name="nativeDataType">12</property>
                 </structure>
             </list-property>
-            <xml-property name="queryText"><![CDATA[select d.* from contract_template_paragraph a, contract_paragraph b, contract_paragraph_ref c, contract_paragraph d
+            <xml-property name="queryText"><![CDATA[select d.id, d.contents, d.seq, d.title
+from contract_template_paragraph a, contract_paragraph b, contract_paragraph_ref c, contract_paragraph d
 where a.contract_template_id = ?
+and a.contract_paragraph_id = b.id
+and b.seq = 1
+and b.id = c.parent_id
+and c.child_id = d.id
+union all
+select d.id, d.contents, d.seq, d.title
+from contract_contract_paragraph a, contract_paragraph b, contract_paragraph_ref c, contract_paragraph d
+where a.contract_id = ?
 and a.contract_paragraph_id = b.id
 and b.seq = 1
 and b.id = c.parent_id
@@ -966,7 +1042,7 @@ order by seq]]></xml-property>
         <design:attributes>
           <design:identifier>
             <design:name></design:name>
-            <design:position>1</design:position>
+            <design:position>2</design:position>
           </design:identifier>
           <design:nativeDataTypeCode>-1</design:nativeDataTypeCode>
           <design:precision>0</design:precision>
@@ -1069,7 +1145,415 @@ order by seq]]></xml-property>
   </design:ResultSets>
 </model:DesignValues>]]></xml-property>
         </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="dsGap" id="152">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">id</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">id</text-property>
+                    <text-property name="heading">id</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">name</text-property>
+                    <text-property name="heading">name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">address</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">address</text-property>
+                    <text-property name="heading">address</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">representative</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">representative</text-property>
+                    <text-property name="heading">representative</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">contractId</property>
+                    <property name="paramName">contractId</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">-1</property>
+                    <property name="position">1</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">id</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">address</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">representative</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">id</property>
+                    <property name="nativeName">id</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">name</property>
+                    <property name="nativeName">name</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">address</property>
+                    <property name="nativeName">address</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">representative</property>
+                    <property name="nativeName">representative</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select id, name, address, representative
+from company
+where ? <> ''
+and id = 1]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>id</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>id</design:label>
+            <design:formattingHints>
+              <design:displaySize>19</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>name</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>name</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>name</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>address</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>address</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>address</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>representative</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>representative</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>representative</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="dsEul" id="153">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">id</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">id</text-property>
+                    <text-property name="heading">id</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">name</text-property>
+                    <text-property name="heading">name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">address</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">address</text-property>
+                    <text-property name="heading">address</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">representative</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">representative</text-property>
+                    <text-property name="heading">representative</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">contractId</property>
+                    <property name="paramName">contractId</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">-1</property>
+                    <property name="position">1</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">id</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">address</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">representative</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">id</property>
+                    <property name="nativeName">id</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">name</property>
+                    <property name="nativeName">name</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">address</property>
+                    <property name="nativeName">address</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">representative</property>
+                    <property name="nativeName">representative</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select id, name, address, representative
+from company
+where id = 2
+and ? <> '']]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>id</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>id</design:label>
+            <design:formattingHints>
+              <design:displaySize>19</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>name</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>name</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>name</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>address</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>address</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>address</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>representative</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>representative</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>representative</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
     </data-sets>
+    <styles>
+        <style name="NewStyle" id="181">
+            <property name="backgroundAttachment">scroll</property>
+            <property name="backgroundImage">images/sign1.png</property>
+            <property name="backgroundRepeat">no-repeat</property>
+        </style>
+        <style name="NewStyle1" id="237">
+            <property name="backgroundImage">images/sign2.png</property>
+            <property name="backgroundRepeat">no-repeat</property>
+        </style>
+        <style name="NewStyle2" id="249">
+            <list-property name="mapRules">
+                <structure>
+                    <expression name="testExpr" type="javascript">params["contractId"].value</expression>
+                    <property name="operator">is-not-null</property>
+                    <text-property name="display">(인)</text-property>
+                </structure>
+            </list-property>
+        </style>
+    </styles>
     <page-setup>
         <simple-master-page name="Simple MasterPage" id="2">
             <property name="type">a4</property>
@@ -1127,10 +1611,20 @@ order by seq]]></xml-property>
                 <property name="verticalAlign">middle</property>
                 <property name="height">7.020833333333333in</property>
                 <cell id="20">
-                    <label id="49">
+                    <data id="244">
                         <property name="textAlign">center</property>
-                        <text-property name="text">2020 년 12월 14일.</text-property>
-                    </label>
+                        <property name="dataSet">dsMaster</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">contract_date</property>
+                                <text-property name="displayName">contract_date</text-property>
+                                <expression name="expression" type="javascript">"계약일자 : " + (dataSetRow["contract_date"] || "2021년 1월 1일")</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">contract_date</property>
+                    </data>
                 </cell>
             </row>
             <row id="21">
@@ -1146,12 +1640,12 @@ order by seq]]></xml-property>
                                 <data id="58">
                                     <property name="fontSize">20pt</property>
                                     <property name="textAlign">center</property>
-                                    <property name="dataSet">dsCompany</property>
+                                    <property name="dataSet">dsGap</property>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">name</property>
                                             <text-property name="displayName">name</text-property>
-                                            <expression name="expression" type="javascript">"\"갑\"" + dataSetRow["name"]</expression>
+                                            <expression name="expression" type="javascript">"\"갑\"" + (dataSetRow["name"] || "회사1")</expression>
                                             <property name="dataType">string</property>
                                             <property name="allowExport">true</property>
                                         </structure>
@@ -1167,12 +1661,12 @@ order by seq]]></xml-property>
                                 <data id="59">
                                     <property name="fontSize">20pt</property>
                                     <property name="textAlign">center</property>
-                                    <property name="dataSet">dsCompany</property>
+                                    <property name="dataSet">dsEul</property>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">name</property>
                                             <text-property name="displayName">name</text-property>
-                                            <expression name="expression" type="javascript">"\"을\"" + dataSetRow["name"]</expression>
+                                            <expression name="expression" type="javascript">"\"을\"" + (dataSetRow["name"] || "회사2")</expression>
                                             <property name="dataType">string</property>
                                             <property name="allowExport">true</property>
                                         </structure>
@@ -1190,7 +1684,7 @@ order by seq]]></xml-property>
             <row id="62">
                 <cell id="63">
                     <grid id="64">
-                        <property name="height">11.291666666666666in</property>
+                        <property name="height">11.114583333333334in</property>
                         <column id="65"/>
                         <row id="66">
                             <property name="verticalAlign">middle</property>
@@ -1213,7 +1707,7 @@ order by seq]]></xml-property>
                             </cell>
                         </row>
                         <row id="68">
-                            <property name="height">7.604166666666667in</property>
+                            <property name="height">7.197916666666667in</property>
                             <cell id="69">
                                 <text-data id="142">
                                     <property name="dataSet">dsContractContents</property>
@@ -1234,88 +1728,286 @@ order by seq]]></xml-property>
                         <row id="70">
                             <property name="height">1.0729166666666667in</property>
                             <cell id="71">
-                                <label id="78">
+                                <data id="245">
                                     <property name="textAlign">right</property>
-                                    <text-property name="text">계약일자 : 2020년 12월 14일</text-property>
-                                </label>
+                                    <property name="dataSet">dsMaster</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">contract_date</property>
+                                            <text-property name="displayName">contract_date</text-property>
+                                            <expression name="expression" type="javascript">"계약일자 : " + (dataSetRow["contract_date"] || "2021년 1월 1일")</expression>
+                                            <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">contract_date</property>
+                                </data>
                             </cell>
                         </row>
                         <row id="72">
                             <cell id="73">
-                                <grid id="79">
-                                    <property name="width">7.59375in</property>
-                                    <column id="80">
-                                        <property name="width">15%</property>
+                                <grid id="192">
+                                    <column id="193">
+                                        <property name="width">80px</property>
                                     </column>
-                                    <column id="81">
-                                        <property name="width">15%</property>
+                                    <column id="194">
+                                        <property name="width">80px</property>
                                     </column>
-                                    <column id="82">
-                                        <property name="width">70%</property>
+                                    <column id="195">
+                                        <property name="width">400px</property>
                                     </column>
-                                    <row id="83">
-                                        <cell id="84">
+                                    <column id="196"/>
+                                    <row id="197">
+                                        <cell id="198">
+                                            <label id="227">
+                                                <property name="textAlign">right</property>
+                                                <text-property name="text">갑)</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="199">
+                                            <label id="229">
+                                                <text-property name="text">주   소 :</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="200">
+                                            <data id="241">
+                                                <property name="dataSet">dsGap</property>
+                                                <list-property name="boundDataColumns">
+                                                    <structure>
+                                                        <property name="name">address</property>
+                                                        <text-property name="displayName">address</text-property>
+                                                        <expression name="expression" type="javascript">dataSetRow["address"]</expression>
+                                                        <property name="dataType">string</property>
+                                                    </structure>
+                                                </list-property>
+                                                <property name="resultSetColumn">address</property>
+                                            </data>
+                                        </cell>
+                                        <cell id="201">
                                             <property name="colSpan">1</property>
                                             <property name="rowSpan">3</property>
-                                            <label id="116">
-                                                <property name="textAlign">right</property>
-                                                <text-property name="text">갑 )</text-property>
-                                            </label>
+                                            <property name="paddingTop">1pt</property>
+                                            <property name="paddingLeft">1pt</property>
+                                            <property name="paddingBottom">1pt</property>
+                                            <property name="paddingRight">1pt</property>
+                                            <property name="verticalAlign">top</property>
+                                            <grid id="250">
+                                                <property name="verticalAlign">middle</property>
+                                                <property name="canShrink">false</property>
+                                                <property name="height">80px</property>
+                                                <property name="dataSet">dsGap</property>
+                                                <list-property name="boundDataColumns">
+                                                    <structure>
+                                                        <property name="name">id</property>
+                                                        <text-property name="displayName">id</text-property>
+                                                        <expression name="expression" type="javascript">dataSetRow["id"]</expression>
+                                                        <property name="dataType">decimal</property>
+                                                    </structure>
+                                                    <structure>
+                                                        <property name="name">name</property>
+                                                        <text-property name="displayName">name</text-property>
+                                                        <expression name="expression" type="javascript">dataSetRow["name"]</expression>
+                                                        <property name="dataType">string</property>
+                                                    </structure>
+                                                    <structure>
+                                                        <property name="name">address</property>
+                                                        <text-property name="displayName">address</text-property>
+                                                        <expression name="expression" type="javascript">dataSetRow["address"]</expression>
+                                                        <property name="dataType">string</property>
+                                                    </structure>
+                                                    <structure>
+                                                        <property name="name">representative</property>
+                                                        <text-property name="displayName">representative</text-property>
+                                                        <expression name="expression" type="javascript">dataSetRow["representative"]</expression>
+                                                        <property name="dataType">string</property>
+                                                    </structure>
+                                                </list-property>
+                                                <column id="251"/>
+                                                <row id="252">
+                                                    <property name="height">80px</property>
+                                                    <cell id="253">
+                                                        <property name="verticalAlign">middle</property>
+                                                        <list-property name="highlightRules">
+                                                            <structure>
+                                                                <property name="operator">is-not-null</property>
+                                                                <expression name="testExpr" type="javascript">row["id"]</expression>
+                                                                <property name="style">NewStyle</property>
+                                                            </structure>
+                                                        </list-property>
+                                                        <label id="254">
+                                                            <text-property name="text">(인)</text-property>
+                                                        </label>
+                                                    </cell>
+                                                </row>
+                                            </grid>
                                         </cell>
-                                        <cell id="85">
-                                            <label id="110">
-                                                <text-property name="text">주    소 :</text-property>
-                                            </label>
-                                        </cell>
-                                        <cell id="86"/>
                                     </row>
-                                    <row id="87">
-                                        <cell id="89">
-                                            <label id="111">
+                                    <row id="202">
+                                        <cell id="203"/>
+                                        <cell id="204">
+                                            <label id="230">
                                                 <text-property name="text">회사명 :</text-property>
                                             </label>
                                         </cell>
-                                        <cell id="90"/>
+                                        <cell id="205">
+                                            <data id="242">
+                                                <property name="dataSet">dsGap</property>
+                                                <list-property name="boundDataColumns">
+                                                    <structure>
+                                                        <property name="name">name</property>
+                                                        <text-property name="displayName">name</text-property>
+                                                        <expression name="expression" type="javascript">dataSetRow["name"]</expression>
+                                                        <property name="dataType">string</property>
+                                                    </structure>
+                                                </list-property>
+                                                <property name="resultSetColumn">name</property>
+                                            </data>
+                                        </cell>
                                     </row>
-                                    <row id="91">
-                                        <cell id="93">
-                                            <label id="112">
+                                    <row id="207">
+                                        <cell id="208"/>
+                                        <cell id="209">
+                                            <label id="231">
                                                 <text-property name="text">대표자 :</text-property>
                                             </label>
                                         </cell>
-                                        <cell id="94"/>
+                                        <cell id="210">
+                                            <data id="243">
+                                                <property name="dataSet">dsGap</property>
+                                                <list-property name="boundDataColumns">
+                                                    <structure>
+                                                        <property name="name">representative</property>
+                                                        <text-property name="displayName">representative</text-property>
+                                                        <expression name="expression" type="javascript">dataSetRow["representative"]</expression>
+                                                        <property name="dataType">string</property>
+                                                    </structure>
+                                                </list-property>
+                                                <property name="resultSetColumn">representative</property>
+                                            </data>
+                                        </cell>
                                     </row>
-                                    <row id="95">
-                                        <cell id="96">
-                                            <property name="colSpan">1</property>
-                                            <property name="rowSpan">3</property>
-                                            <label id="117">
+                                    <row id="212">
+                                        <cell id="213">
+                                            <label id="228">
                                                 <property name="textAlign">right</property>
                                                 <text-property name="text">을)</text-property>
                                             </label>
                                         </cell>
-                                        <cell id="97">
-                                            <label id="113">
-                                                <text-property name="text">주    소 :</text-property>
+                                        <cell id="214">
+                                            <label id="232">
+                                                <text-property name="text">주   소 :</text-property>
                                             </label>
                                         </cell>
-                                        <cell id="98"/>
+                                        <cell id="215">
+                                            <data id="238">
+                                                <property name="dataSet">dsEul</property>
+                                                <list-property name="boundDataColumns">
+                                                    <structure>
+                                                        <property name="name">address</property>
+                                                        <text-property name="displayName">address</text-property>
+                                                        <expression name="expression" type="javascript">dataSetRow["address"]</expression>
+                                                        <property name="dataType">string</property>
+                                                    </structure>
+                                                </list-property>
+                                                <property name="resultSetColumn">address</property>
+                                            </data>
+                                        </cell>
+                                        <cell id="216">
+                                            <property name="colSpan">1</property>
+                                            <property name="rowSpan">3</property>
+                                            <property name="verticalAlign">top</property>
+                                            <grid id="255">
+                                                <property name="height">80px</property>
+                                                <property name="dataSet">dsEul</property>
+                                                <list-property name="boundDataColumns">
+                                                    <structure>
+                                                        <property name="name">id</property>
+                                                        <text-property name="displayName">id</text-property>
+                                                        <expression name="expression" type="javascript">dataSetRow["id"]</expression>
+                                                        <property name="dataType">decimal</property>
+                                                    </structure>
+                                                    <structure>
+                                                        <property name="name">name</property>
+                                                        <text-property name="displayName">name</text-property>
+                                                        <expression name="expression" type="javascript">dataSetRow["name"]</expression>
+                                                        <property name="dataType">string</property>
+                                                    </structure>
+                                                    <structure>
+                                                        <property name="name">address</property>
+                                                        <text-property name="displayName">address</text-property>
+                                                        <expression name="expression" type="javascript">dataSetRow["address"]</expression>
+                                                        <property name="dataType">string</property>
+                                                    </structure>
+                                                    <structure>
+                                                        <property name="name">representative</property>
+                                                        <text-property name="displayName">representative</text-property>
+                                                        <expression name="expression" type="javascript">dataSetRow["representative"]</expression>
+                                                        <property name="dataType">string</property>
+                                                    </structure>
+                                                </list-property>
+                                                <column id="256"/>
+                                                <row id="257">
+                                                    <property name="height">80px</property>
+                                                    <cell id="258">
+                                                        <property name="verticalAlign">middle</property>
+                                                        <list-property name="highlightRules">
+                                                            <structure>
+                                                                <property name="operator">is-not-null</property>
+                                                                <expression name="testExpr" type="javascript">row["id"]</expression>
+                                                                <property name="style">NewStyle1</property>
+                                                            </structure>
+                                                        </list-property>
+                                                        <label id="259">
+                                                            <text-property name="text">(인)</text-property>
+                                                        </label>
+                                                    </cell>
+                                                </row>
+                                            </grid>
+                                        </cell>
                                     </row>
-                                    <row id="99">
-                                        <cell id="101">
-                                            <label id="114">
+                                    <row id="217">
+                                        <cell id="218"/>
+                                        <cell id="219">
+                                            <label id="233">
                                                 <text-property name="text">회사명 :</text-property>
                                             </label>
                                         </cell>
-                                        <cell id="102"/>
+                                        <cell id="220">
+                                            <data id="239">
+                                                <property name="dataSet">dsEul</property>
+                                                <list-property name="boundDataColumns">
+                                                    <structure>
+                                                        <property name="name">name</property>
+                                                        <text-property name="displayName">name</text-property>
+                                                        <expression name="expression" type="javascript">dataSetRow["name"]</expression>
+                                                        <property name="dataType">string</property>
+                                                    </structure>
+                                                </list-property>
+                                                <property name="resultSetColumn">name</property>
+                                            </data>
+                                        </cell>
                                     </row>
-                                    <row id="103">
-                                        <cell id="105">
-                                            <label id="115">
+                                    <row id="222">
+                                        <cell id="223"/>
+                                        <cell id="224">
+                                            <label id="234">
                                                 <text-property name="text">대표자 :</text-property>
                                             </label>
                                         </cell>
-                                        <cell id="106"/>
+                                        <cell id="225">
+                                            <data id="240">
+                                                <property name="dataSet">dsEul</property>
+                                                <list-property name="boundDataColumns">
+                                                    <structure>
+                                                        <property name="name">representative</property>
+                                                        <text-property name="displayName">representative</text-property>
+                                                        <expression name="expression" type="javascript">dataSetRow["representative"]</expression>
+                                                        <property name="dataType">string</property>
+                                                    </structure>
+                                                </list-property>
+                                                <property name="resultSetColumn">representative</property>
+                                            </data>
+                                        </cell>
                                     </row>
                                 </grid>
                             </cell>

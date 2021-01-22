@@ -108,7 +108,6 @@
           <v-stepper-content step="2">
             <component ref="contents" v-bind:is="selectedComponent">
             </component>
-
             <div class="mt-2">
               <v-btn
                 color="primary"
@@ -133,19 +132,29 @@
               class="d-flex justify-center"
             >
               <div style="width:70%;background-color: white;">
-
+                <pdf
+                  v-for="i in numPages"
+                  :key="i"
+                  :src="pdfSrc"
+                  :page="i"
+                ></pdf>
               </div>
             </v-sheet>
-            <v-btn
-              color="primary"
-              @click="e1 = 1"
-            >
-              완료
-            </v-btn>
+            <div class="mt-2">
+              <v-btn
+                color="primary"
+                @click="e1 = 1"
+              >
+                완료
+              </v-btn>
 
-            <v-btn text @click="cancel()">
-              취소
-            </v-btn>
+              <v-btn text @click="cancel()">
+                취소
+              </v-btn>
+              <v-btn text color="lime" :href="pdfHref" target="_blank" download>
+                Download
+              </v-btn>
+            </div>
           </v-stepper-content>
         </v-stepper-items>
       </v-stepper>
@@ -186,6 +195,9 @@ export default class WriteContract extends Vue {
   selectedComponent = ''
   templateList: Template[] = []
   selectedTemplate: Template = (null as any) as Template
+  pdfHref = ''
+  pdfSrc?: any
+  numPages = 3
 
   cancel () {
     if (this.e1 > 1) {
@@ -230,11 +242,11 @@ export default class WriteContract extends Vue {
       .then(({ data: savedContract }) => {
         (this.$refs.contents as any).setContents(savedContract)
         this.e1 = 3
-        // this.pdfHref = `http://localhost:8080/report/${this.selectedTemplate.templateName}?output=pdf&templateId=${savedContract.id}`
-        // this.pdfSrc = pdf.createLoadingTask(this.pdfHref)
-        // this.pdfSrc.promise.then((a: any) => {
-        //   this.numPages = a.numPages
-        // })
+        this.pdfHref = `http://localhost:8080/report/${this.selectedTemplate.templateName}?output=pdf&contractId=${savedContract.id}`
+        this.pdfSrc = pdf.createLoadingTask(this.pdfHref)
+        this.pdfSrc.promise.then((a: any) => {
+          this.numPages = a.numPages
+        })
       })
       .catch(() => {
         console.log('error')
