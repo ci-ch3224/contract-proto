@@ -25,7 +25,7 @@ public class ContractTemplateService {
             .orElseThrow(RuntimeException::new);
     }
 
-    public List<ContractTemplateDto> getContractTemplates() {
+    public List<ContractTemplateDto> getContractTemplates() { 
     	return StreamSupport.stream(contractTemplateRepository.findAll().spliterator(), false)
                 .map(ContractTemplateDto::of)
                 .collect(Collectors.toList());
