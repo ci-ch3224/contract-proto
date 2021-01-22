@@ -38,13 +38,6 @@
           >
             추가
           </v-btn>
-          <v-btn
-            outlined
-            rounded
-            @click="getContents()"
-          >
-            test
-          </v-btn>
         </v-card-actions>
         <v-card-text>
           <v-card
