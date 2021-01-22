@@ -39,6 +39,7 @@ import { Component, Vue } from 'vue-property-decorator'
 import 'tui-grid/dist/tui-grid.css'
 import { Grid } from '@toast-ui/vue-grid'
 import WriteContract from '@/components/WriteContract.vue'
+import { contractService } from '@/service/ContractService'
 
 @Component({
   components: {
@@ -50,16 +51,7 @@ export default class Contracts extends Vue {
   page = 1
 
   gridProps = {
-    data: [
-      {
-        title: 'hello',
-        createdBy: '김을동',
-        lastModifiedAt: '2020-01-01',
-        gap: '가나시스템',
-        eul: '다라소프트'
-
-      }
-    ],
+    data: [],
     columns: [
       {
         header: '계약서명',
@@ -86,8 +78,19 @@ export default class Contracts extends Vue {
     }
   }
 
+  search (): void {
+    contractService.getAll().then(({ data: list }) => {
+      const grid = (this.$refs.tuiGrid as Grid)
+      grid.invoke('resetData', list)
+    })
+  }
+
   closeDialog () {
     this.dialog = false
+  }
+
+  created () {
+    this.search()
   }
 }
 </script>

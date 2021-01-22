@@ -41,13 +41,13 @@
         <v-stepper-items>
           <!-- 1. 포멧 선택 -->
           <v-stepper-content step="1" class="py-2 px-0">
-            <v-carousel :height=carouselHeight v-model="selectedReportIndex">
+            <v-carousel :height=carouselHeight v-model="selectedReportIndex" light hide-delimiter-background>
               <v-carousel-item
                 v-for="(d, i) in reports"
                 :key="i"
               >
                 <v-sheet
-                  color="grey lighten-4"
+                  color="grey lighten-5"
                   height="100%"
                   tile
                   class="d-flex justify-center"
@@ -124,6 +124,7 @@
             </v-sheet>
             <v-footer
               fixed
+              elevation="3"
               >
               <v-btn
                 color="primary"
@@ -177,7 +178,7 @@ export default class WriteTemplate extends Vue {
   pdfHref = ''
   pdfSrc = pdf.createLoadingTask('http://localhost:8080/report/base3?output=pdf&templateId=3')
   numPages = 3
-  carouselHeight = window.screen.height - 350;
+  carouselHeight = window.innerHeight - 203
 
   step1 () {
     this.e1 = 2
@@ -188,6 +189,20 @@ export default class WriteTemplate extends Vue {
     if (this.e1 > 1) {
       this.e1--
     }
+  }
+
+  mounted () {
+    // console.log("ready...");
+    window.addEventListener('resize', this.handleResize)
+  }
+
+  beforeDestroy () {
+    // console.log("beforeDestroy...");
+    window.removeEventListener('resize', this.handleResize)
+  }
+
+  handleResize () {
+    this.carouselHeight = window.innerHeight - 203
   }
 
   created () {
