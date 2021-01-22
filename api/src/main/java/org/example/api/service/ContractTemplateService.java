@@ -1,13 +1,15 @@
 package org.example.api.service;
 
-import org.example.api.domain.ContractTemplate;
-import org.example.api.dto.ContractTemplateDto;
-import org.example.api.repository.ContractTemplateRepository;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
+
+import org.example.api.domain.ContractTemplate;
+import org.example.api.dto.ContractTemplateDto;
+import org.example.api.repository.ContractTemplateRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 @Service
 public class ContractTemplateService {
@@ -24,9 +26,14 @@ public class ContractTemplateService {
     }
 
     public List<ContractTemplateDto> getContractTemplates() {
-        return StreamSupport.stream(contractTemplateRepository.findAll().spliterator(), false)
+    	return StreamSupport.stream(contractTemplateRepository.findAll().spliterator(), false)
                 .map(ContractTemplateDto::of)
                 .collect(Collectors.toList());
+    }
+    
+    public Page<ContractTemplateDto> getContractTemplates(Pageable pageable) {
+        return contractTemplateRepository.findAll(pageable)
+        			.map(ContractTemplateDto::of);
     }
 
     public ContractTemplateDto save(ContractTemplateDto dto) {

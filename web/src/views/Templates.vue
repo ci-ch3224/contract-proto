@@ -25,12 +25,10 @@
     <v-row>
       <v-col>
         <grid ref="tuiGrid" :data="list" :columns="gridProps.columns" :options="gridProps.options" />
-        <v-pagination
-          v-model="page"
-          :length="6"
-        ></v-pagination>
       </v-col>
     </v-row>
+    <pagination ref="pagination" :pageable="pageable" :executeFunction="search">
+    </pagination>
   </v-container>
 </template>
 
@@ -41,16 +39,18 @@ import { Grid } from '@toast-ui/vue-grid'
 import WriteTemplate from '@/components/WriteTemplate.vue'
 import { contractTemplateService } from '@/service/ContractTemplateService'
 import { ContractTemplate } from '@/model/ContractTemplate'
+import { Pageable } from '@/model/Pageable'
+import pagination from '@/components/layout/Paginaion.vue'
 
 @Component({
   components: {
-    Grid, WriteTemplate
+    Grid, WriteTemplate, pagination
   }
 })
 export default class Templates extends Vue {
   dialog = false
   list: ContractTemplate[] = []
-  page = 1
+  pageable: Pageable = new Pageable()
 
   gridProps = {
     columns: [
@@ -72,10 +72,12 @@ export default class Templates extends Vue {
   }
 
   search (): void {
-    contractTemplateService.getAll().then(({ data: list }) => {
-      console.log(list)
+    this.pageable.page--
+    contractTemplateService.getPage(this.pageable).then(({ data: list }) => {
       const grid = (this.$refs.tuiGrid as Grid)
-      grid.invoke('resetData', list)
+      grid.invoke('resetData', list.content)
+      this.pageable.totalPages = list.totalPages
+      this.pageable.page = list.number + 1
     })
   }
 
