@@ -1,45 +1,38 @@
 <template>
   <v-app>
     <v-app-bar
+      id="home-app-bar"
       app
-      color="deep-purple"
-      dark
+      color="white"
+      elevation="1"
+      height="80"
     >
-      <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
+      <v-icon class="mx-1" color="primary">mdi-file-document-edit-outline</v-icon>
+      <v-toolbar-title>전자계약서관리시스템</v-toolbar-title>
+      <v-spacer />
 
-      <v-toolbar-title>전자계약관리시스템</v-toolbar-title>
-    </v-app-bar>
-
-    <v-navigation-drawer
-      v-model="drawer"
-      absolute
-      temporary
-      style="position:fixed; top:0; left:0; overflow-y:auto;"
-    ><!-- drawer 스크롤이 본문을 따라가는 이슈 https://github.com/vuetifyjs/vuetify/issues/3385 -->
-      <v-list
-        nav
-        dense
-      >
-        <v-list-item-group
-          active-class="deep-purple--text text--accent-4"
+      <div>
+        <v-tabs
+          class="hidden-sm-and-down"
+          optional
+          icons-and-text
         >
-          <v-list-item
+          <v-tab
             v-for="([icon, text, to], i) in items"
             :key="i"
             :to="to"
-            link
+            :ripple="false"
+            active-class="text--primary"
+            class="font-weight-bold"
+            min-width="96"
           >
-            <v-list-item-icon>
-              <v-icon>{{ icon }}</v-icon>
-            </v-list-item-icon>
+            {{ text }}
+          <v-icon class="mx-1" small>{{ icon }}</v-icon>
+          </v-tab>
+        </v-tabs>
+      </div>
 
-            <v-list-item-content>
-              <v-list-item-title>{{ text }}</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list-item-group>
-      </v-list>
-    </v-navigation-drawer>
+    </v-app-bar>
     <v-main>
       <router-view />
     </v-main>
@@ -53,9 +46,20 @@ import { Component, Vue } from 'vue-property-decorator'
 export default class LayoutNormal extends Vue {
   drawer = false
   items = [
-    ['mdi-folder-multiple', '계약서 템플릿 관리', '/templates'],
-    ['mdi-pen-plus', '계약서 작성', '/contracts'],
-    ['mdi-folder-search', '계약서 이력조회', '/history']
+    ['mdi-home', 'Home', '/'],
+    ['mdi-folder-multiple', 'Templete', '/templates'],
+    ['mdi-pen-plus', 'Contract', '/contracts'],
+    ['mdi-folder-search', 'History', '/history']
   ]
 }
 </script>
+<style lang="sass">
+  #home-app-bar
+    .v-tabs-slider
+      max-width: 24px
+      margin: 0 auto
+
+    .v-tab
+      &::before
+        display: none
+</style>
