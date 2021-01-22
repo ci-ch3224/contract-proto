@@ -33,7 +33,7 @@ public class BirtReportController {
         try {
             reportService.loadReports();
         } catch (EngineException | IOException e) {
-            return ResponseEntity.status(HttpServletResponse.SC_INTERNAL_SERVER_ERROR).build();
+            return ResponseEntity.status(HttpServletResponse.SC_INTERNAL_SERVER_ERROR).build(); 
         }
         return ResponseEntity.ok().build();
     }
