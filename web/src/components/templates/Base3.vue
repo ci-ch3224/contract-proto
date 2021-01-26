@@ -5,7 +5,7 @@
       <v-card-text>
         <v-text-field
           v-model="contractTemplate.title"
-          label="계약서명"
+          label="제목"
         ></v-text-field>
         <v-text-field
           label="소제목"
@@ -14,16 +14,20 @@
       </v-card-text>
     </v-card>
     <v-card outlined elevation="2" class="mt-2">
-      <v-card-title>계약서 본문</v-card-title>
+      <v-card-title>갑지</v-card-title>
       <v-card-text>
+        <v-text-field
+          v-model="contractTemplate.bigParagraphs[0].title"
+          label="제목"
+        ></v-text-field>
         <editor initialEditType="wysiwyg"
-                height="500px"
+                height="400px"
                 ref="contractContents"
         />
       </v-card-text>
     </v-card>
     <v-card outlined elevation="2" class="mt-2">
-      <v-card-title>약관</v-card-title>
+      <v-card-title>조항</v-card-title>
       <v-card-text>
         <v-text-field
           label="약관명"
@@ -67,6 +71,13 @@
                       height="150px"
                       :ref="'sp' + i"
               />
+              <v-checkbox v-model="item.necessary" value="Y">
+                <template v-slot:label>
+                  <div>
+                    필수조항으로 설정합니다.
+                  </div>
+                </template>
+              </v-checkbox>
             </v-card-text>
           </v-card>
         </v-card-text>

@@ -19,14 +19,16 @@ public class ContractParagraphDto {
     private int seq;
     private String title;
     private String contents;
+    private Character necessary;
     private List<ContractParagraphDto> smallParagraphs;
 
     @Builder
-    public ContractParagraphDto(long id, int seq, String title, String contents, List<ContractParagraphDto> smallParagraphs) {
+    public ContractParagraphDto(long id, int seq, String title, String contents, Character necessary, List<ContractParagraphDto> smallParagraphs) {
         this.id = id;
         this.seq = seq;
         this.title = title;
         this.contents = contents;
+        this.necessary = necessary;
         this.smallParagraphs = smallParagraphs;
     }
 
@@ -36,6 +38,7 @@ public class ContractParagraphDto {
                 .seq(entity.getSeq())
                 .title(entity.getTitle())
                 .contents(entity.getContents())
+                .necessary(entity.getNecessary())
                 .smallParagraphs(ContractParagraphDto.of(entity.getSmallParagraphs()))
                 .build();
     }
@@ -52,6 +55,7 @@ public class ContractParagraphDto {
                 .seq(this.seq)
                 .title(this.title)
                 .contents(this.contents)
+                .necessary(this.necessary)
                 .smallParagraphs(Optional.ofNullable(this.smallParagraphs).orElse(null).stream()
                     .map(dto -> dto.toEntity()).collect(Collectors.toList()))
                 .build();

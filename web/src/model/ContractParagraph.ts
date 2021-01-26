@@ -3,6 +3,7 @@ export class ContractParagraph {
   title = ''
   contents = ''
   seq = 0
+  necessary = 'N'
   smallParagraphs: ContractParagraph[] = []
 
   addParagraphs (paragraph: ContractParagraph) {
@@ -18,6 +19,7 @@ export class ContractParagraph {
     contractParagraph.title = old.title
     contractParagraph.contents = old.contents
     contractParagraph.seq = old.seq
+    contractParagraph.necessary = old.necessary
     for (const sp of old.smallParagraphs) {
       contractParagraph.addParagraphs(ContractParagraph.new(sp))
     }

@@ -196,7 +196,7 @@ export default class WriteContract extends Vue {
   templateList: Template[] = []
   selectedTemplate: Template = (null as any) as Template
   pdfHref = ''
-  pdfSrc?: any
+  pdfSrc?: any = ''
   numPages = 3
 
   cancel () {
@@ -222,12 +222,12 @@ export default class WriteContract extends Vue {
   }
 
   searchTemplate () {
-    contractTemplateService.getAll().then(({ data: list }) => {
+    contractTemplateService.getAll().then(({ data: page }) => {
       this.templateList = []
-      list.forEach((item: ContractTemplate) => {
+      page.content.forEach((item: ContractTemplate) => {
         this.templateList.push({
-          id: item.id,
-          title: item.title,
+          id: item.id || 0,
+          title: item.title || '',
           templateName: item.templateName,
           src: pdf.createLoadingTask(`http://localhost:8080/report/${item.templateName}?output=pdf&templateId=${item.id}`),
           numPages: 1

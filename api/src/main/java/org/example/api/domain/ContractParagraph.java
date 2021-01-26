@@ -23,6 +23,9 @@ public class ContractParagraph {
     @Column(name = "contents", nullable = false)
     private String contents;
 
+    @Column(name = "necessary")
+    private Character necessary;
+
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "contract_paragraph_ref",
             joinColumns = @JoinColumn(name = "parent_id"),
@@ -30,11 +33,12 @@ public class ContractParagraph {
     private List<ContractParagraph> smallParagraphs;
 
     @Builder
-    public ContractParagraph(long id, int seq, String title, String contents, List<ContractParagraph> smallParagraphs) {
+    public ContractParagraph(long id, int seq, String title, String contents, Character necessary, List<ContractParagraph> smallParagraphs) {
         this.id = id;
         this.seq = seq;
         this.title = title;
         this.contents = contents;
+        this.necessary = necessary;
         this.smallParagraphs = smallParagraphs;
     }
 }

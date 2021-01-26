@@ -60,11 +60,11 @@ export default class Templates extends Vue {
       },
       {
         header: '등록자',
-        name: 'id'
+        name: 'createdBy'
       },
       {
         header: '최근수정일',
-        name: 'subTitle'
+        name: 'modifiedDate'
       }
     ],
     options: {

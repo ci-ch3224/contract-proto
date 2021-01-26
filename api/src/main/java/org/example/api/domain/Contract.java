@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
@@ -26,6 +27,24 @@ public class Contract {
     @Column(name = "sub_title", nullable = false)
     private String subTitle;
 
+    @Column(name = "contract_date")
+    private LocalDateTime contractDate;
+
+    @Column(name = "contract_name")
+    private String contractName;
+
+    @Column(name = "contract_amount")
+    private String contractAmount;
+
+    @Column(name = "contract_condition")
+    private String contractCondition;
+
+    @Column(name = "contract_start_date")
+    private LocalDateTime contractStartDate;
+
+    @Column(name = "contract_end_date")
+    private LocalDateTime contractEndDate;
+
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "contract_contract_paragraph",
             joinColumns = @JoinColumn(name = "contract_id"),
@@ -33,11 +52,23 @@ public class Contract {
     private List<ContractParagraph> bigParagraphs;
 
     @Builder
-    public Contract(long id, String title, String subTitle, long templateId, List<ContractParagraph> bigParagraphs) {
+    public Contract(long id, String title, String subTitle, long templateId, LocalDateTime contractDate,
+                    String contractName,
+                    String contractAmount,
+                    String contractCondition,
+                    LocalDateTime contractStartDate,
+                    LocalDateTime contractEndDate,
+                    List<ContractParagraph> bigParagraphs) {
         this.id = id;
         this.templateId = templateId;
         this.title = title;
         this.subTitle = subTitle;
+        this.contractDate = contractDate;
+        this.contractName = contractName;
+        this.contractAmount = contractAmount;
+        this.contractStartDate = contractStartDate;
+        this.contractEndDate = contractEndDate;
+        this.contractCondition = contractCondition;
         this.bigParagraphs = bigParagraphs;
     }
 }

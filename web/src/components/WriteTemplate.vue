@@ -54,6 +54,7 @@
                 >
                   <div style="width:70%;background-color: white;">
                     <pdf
+                      class="mb-2"
                       v-for="i in d.numPages"
                       :key="i"
                       :src="d.src"
@@ -115,6 +116,7 @@
             >
               <div style="width:70%;background-color: white;">
                 <pdf
+                  class="mb-2"
                   v-for="i in numPages"
                   :key="i"
                   :src="pdfSrc"
@@ -130,7 +132,7 @@
                 color="primary"
                 @click="e1 = 1"
               >
-                확정
+                완료
               </v-btn>
 
               <v-btn text @click="cancel()">
