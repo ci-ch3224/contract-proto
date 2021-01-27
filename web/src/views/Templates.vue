@@ -99,7 +99,7 @@ export default class Templates extends Vue {
         renderer: {
           type: ViewRenderer,
           options: {
-            clickEventFunc: this.viewTemplate
+            clickEventFunc: this.selectRow
           }
         }
       },
@@ -122,9 +122,6 @@ export default class Templates extends Vue {
         row: {
           odd: {
             background: '#ffffff'
-          },
-          hover: {
-            background: '#ccc'
           }
         },
         cell: {
@@ -164,7 +161,7 @@ export default class Templates extends Vue {
     ev.instance.setSelectionRange(record)
   }
 
-  viewTemplate (row: any): void {
+  selectRow (row: any): void {
     this.selectedTemplate = row
     this.viewDialog = true
   }
