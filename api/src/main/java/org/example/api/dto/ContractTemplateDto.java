@@ -4,13 +4,11 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.example.api.domain.ContractParagraph;
 import org.example.api.domain.ContractTemplate;
 
+import java.time.format.DateTimeFormatter;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -21,14 +19,18 @@ public class ContractTemplateDto {
     private String title;
     private String subTitle;
     private String templateName;
+    private String createdBy;
+    private String modifiedDate;
     private List<ContractParagraphDto> bigParagraphs;
 
     @Builder
-    public ContractTemplateDto(long id, String title, String subTitle, String templateName, List<ContractParagraphDto> bigParagraphs) {
+    public ContractTemplateDto(long id, String title, String subTitle, String templateName, String createdBy, String modifiedDate, List<ContractParagraphDto> bigParagraphs) {
         this.id = id;
         this.title = title;
         this.subTitle = subTitle;
         this.templateName = templateName;
+        this.createdBy = createdBy;
+        this.modifiedDate = modifiedDate;
         this.bigParagraphs = bigParagraphs;
     }
 
@@ -38,6 +40,8 @@ public class ContractTemplateDto {
                 .title(entity.getTitle())
                 .subTitle(entity.getSubTitle())
                 .templateName(entity.getTemplateName())
+                .createdBy(entity.getCreatedBy().getUserName())
+                .modifiedDate(entity.getModifiedDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
                 .bigParagraphs(ContractParagraphDto.of(entity.getBigParagraphs()))
                 .build();
     }

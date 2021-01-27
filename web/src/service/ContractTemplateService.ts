@@ -16,14 +16,19 @@ class ContractTemplateService {
   }
 
   getPage (pageable: Pageable) {
-    return axios.get('/contractTemplates?' + this.getQueryString(pageable))
+    return axios.get('/contractTemplates', {
+      params: pageable,
+      paramsSerializer: (params) => {
+        return this.getQueryString(params)
+      }
+    })
   }
 
   private getQueryString (obj: any): string {
     let qs = ''
     Object.entries(obj).forEach(
-      function ([key, value], index) {
-        index === Object.entries(obj).length - 1 ? qs += key + '=' + value : qs += key + '=' + value + '&'
+      ([key, value]) => {
+        qs += key + '=' + value
       }
     )
     return qs

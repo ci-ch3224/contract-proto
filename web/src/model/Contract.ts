@@ -6,6 +6,12 @@ export class Contract {
   templateId = 0
   title = ''
   subTitle = ''
+  contractDate = ''
+  contractName = ''
+  contractAmount = ''
+  contractCondition = ''
+  contractStartDate = ''
+  contractEndDate = ''
   bigParagraphs: ContractParagraph[] = []
   createdBy = ''
   lastModifiedAt = ''

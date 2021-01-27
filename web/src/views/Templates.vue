@@ -105,11 +105,11 @@ export default class Templates extends Vue {
       },
       {
         header: '등록자',
-        name: ''
+        name: 'createdBy'
       },
       {
         header: '최근수정일',
-        name: ''
+        name: 'modifiedDate'
       }
     ],
     options: {
