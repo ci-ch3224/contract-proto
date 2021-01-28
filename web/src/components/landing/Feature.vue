@@ -26,7 +26,7 @@
         </div>
       </v-col>
       <v-col lg="4" class="mx-md-auto">
-        <v-img :src="require('@/../dist/img/ill.png')" width="100%"/>
+        <v-img src="@/assets/ill.png" width="100%"/>
       </v-col>
     </v-row>
   </v-container>

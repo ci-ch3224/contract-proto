@@ -4,7 +4,7 @@
     <Parallax></Parallax>
     <Feature></Feature>
     <Insight></Insight>
-    <br/><br >
+    <br/><br/>
     <HomeFooter></HomeFooter>
   </div>
   </section>

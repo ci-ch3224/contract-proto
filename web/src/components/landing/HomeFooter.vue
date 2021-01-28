@@ -1,6 +1,7 @@
 <template>
   <v-footer padless>
     <v-col class="text-center" cols="12">
+      <br/>
       <v-divider></v-divider>
     </v-col>
     <v-col
