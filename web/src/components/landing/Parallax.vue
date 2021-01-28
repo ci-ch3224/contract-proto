@@ -2,7 +2,7 @@
   <v-parallax
     id="parallax-first"
     class="white--text"
-    src="@/../dist/img/home-hero.jpg"
+    src="@/assets/home-hero.jpg"
     height="600"
     max-width="700"
     width="100%"
