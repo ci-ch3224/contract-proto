@@ -24,11 +24,23 @@
     </v-row>
     <v-row>
       <v-col>
-        <grid ref="tuiGrid" :data="list" :columns="gridProps.columns" :options="gridProps.options" />
+        <grid ref="tuiGrid"
+          @click="clickedRow"
+          :data="list" :columns="gridProps.columns"
+          :options="gridProps.options"
+          :theme="gridProps.theme"/>
       </v-col>
     </v-row>
     <pagination ref="pagination" :pageable="pageable" :executeFunction="search">
     </pagination>
+    <v-dialog
+      v-model="viewDialog"
+      hide-overlay
+      transition="dialog-top-transition"
+      scrollable
+    >
+      <viewTemplate :selectedTemplate="selectedTemplate" :closeFunc="closeViewDialog"/>
+    </v-dialog>
   </v-container>
 </template>
 
@@ -36,19 +48,45 @@
 import { Component, Vue } from 'vue-property-decorator'
 import 'tui-grid/dist/tui-grid.css'
 import { Grid } from '@toast-ui/vue-grid'
+import gridThemeConfig from '@/config/tui-grid.theme.ts'
 import WriteTemplate from '@/components/WriteTemplate.vue'
 import { contractTemplateService } from '@/service/ContractTemplateService'
 import { ContractTemplate } from '@/model/ContractTemplate'
 import { Pageable } from '@/model/Pageable'
 import pagination from '@/components/layout/Paginaion.vue'
+import viewTemplate from '@/components/ViewTemplate.vue'
+
+class ViewRenderer {
+  el = document.createElement('a')
+  constructor (props: any) {
+    const { grid, rowKey, columnInfo } = props
+
+    this.el.addEventListener('click', () => {
+      columnInfo.renderer.options.clickEventFunc(grid.getRow(rowKey))
+    })
+
+    this.el.style.marginLeft = '10px'
+    this.render(props)
+  }
+
+  getElement () {
+    return this.el
+  }
+
+  render (props: any) {
+    this.el.text = String(props.value)
+  }
+}
 
 @Component({
   components: {
-    Grid, WriteTemplate, pagination
+    Grid, WriteTemplate, pagination, viewTemplate
   }
 })
 export default class Templates extends Vue {
   dialog = false
+  viewDialog = false
+  selectedTemplate: ContractTemplate = (null as any)
   list: ContractTemplate[] = []
   pageable: Pageable = new Pageable()
 
@@ -56,7 +94,13 @@ export default class Templates extends Vue {
     columns: [
       {
         header: '계약서명',
-        name: 'title'
+        name: 'title',
+        renderer: {
+          type: ViewRenderer,
+          options: {
+            clickEventFunc: this.openViewDialog
+          }
+        }
       },
       {
         header: '등록자',
@@ -68,7 +112,10 @@ export default class Templates extends Vue {
       }
     ],
     options: {
-    }
+      scrollX: false,
+      scrollY: false
+    },
+    theme: gridThemeConfig
   }
 
   search (): void {
@@ -79,6 +126,19 @@ export default class Templates extends Vue {
     })
   }
 
+  clickedRow (ev: any): void {
+    const record = {
+      start: [ev.rowKey, 0],
+      end: [ev.rowKey, ev.instance.getColumns().length]
+    }
+    ev.instance.setSelectionRange(record)
+  }
+
+  openViewDialog (row: any): void {
+    this.selectedTemplate = row
+    this.viewDialog = true
+  }
+
   created () {
     this.search()
   }
@@ -86,9 +146,13 @@ export default class Templates extends Vue {
   closeDialog () {
     this.dialog = false
   }
+
+  closeViewDialog () {
+    this.viewDialog = false
+  }
 }
+
 </script>
 
-<style>
-
+<style scoped>
 </style>
