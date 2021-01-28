@@ -16,9 +16,11 @@ export default class App extends Vue {
 }
 </script>
 
-<style>
+<style lang="sass">
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css)
+@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css)
+
 /* v-navigation-drawer 항상위 */
-.v-navigation-drawer {
-  z-index: 999999 !important;
-}
+.v-navigation-drawer
+  z-index: 999999 !important
 </style>
