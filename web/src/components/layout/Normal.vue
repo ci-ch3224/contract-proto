@@ -8,11 +8,12 @@
       height="80"
     >
       <v-icon class="mx-1" color="primary">mdi-file-document-edit-outline</v-icon>
-      <v-toolbar-title>전자계약서관리시스템</v-toolbar-title>
+      <v-toolbar-title id="toolbar-title">전자계약서관리시스템</v-toolbar-title>
       <v-spacer />
 
       <div>
         <v-tabs
+          id="home-app-tab"
           class="hidden-sm-and-down"
           optional
           icons-and-text
@@ -54,12 +55,16 @@ export default class LayoutNormal extends Vue {
 }
 </script>
 <style lang="sass">
-  #home-app-bar
-    .v-tabs-slider
-      max-width: 24px
-      margin: 0 auto
+#home-app-bar
+  .v-tabs-slider
+    max-width: 24px
+    margin: 0 auto
+  .v-tab
+    &::before
+      display: none
 
-    .v-tab
-      &::before
-        display: none
+#toolbar-title
+  font-family: 'Nanum Square'
+  font-weight: 700
+  color: #32325d
 </style>

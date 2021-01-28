@@ -194,12 +194,10 @@ export default class WriteTemplate extends Vue {
   }
 
   mounted () {
-    // console.log("ready...");
     window.addEventListener('resize', this.handleResize)
   }
 
   beforeDestroy () {
-    // console.log("beforeDestroy...");
     window.removeEventListener('resize', this.handleResize)
   }
 

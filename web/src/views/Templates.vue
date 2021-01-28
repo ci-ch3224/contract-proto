@@ -98,7 +98,7 @@ export default class Templates extends Vue {
         renderer: {
           type: ViewRenderer,
           options: {
-            clickEventFunc: this.selectRow
+            clickEventFunc: this.openViewDialog
           }
         }
       },
@@ -134,7 +134,7 @@ export default class Templates extends Vue {
     ev.instance.setSelectionRange(record)
   }
 
-  selectRow (row: any): void {
+  openViewDialog (row: any): void {
     this.selectedTemplate = row
     this.viewDialog = true
   }
