@@ -48,6 +48,7 @@
 import { Component, Vue } from 'vue-property-decorator'
 import 'tui-grid/dist/tui-grid.css'
 import { Grid } from '@toast-ui/vue-grid'
+import gridThemeConfig from '@/config/tui-grid.theme.ts'
 import WriteTemplate from '@/components/WriteTemplate.vue'
 import { contractTemplateService } from '@/service/ContractTemplateService'
 import { ContractTemplate } from '@/model/ContractTemplate'
@@ -60,13 +61,11 @@ class ViewRenderer {
   constructor (props: any) {
     const { grid, rowKey, columnInfo } = props
 
-    this.el.addEventListener('click', (ev) => {
+    this.el.addEventListener('click', () => {
       columnInfo.renderer.options.clickEventFunc(grid.getRow(rowKey))
     })
 
     this.el.style.marginLeft = '10px'
-    // this.el.style.fontSize = '16px'
-
     this.render(props)
   }
 
@@ -116,33 +115,7 @@ export default class Templates extends Vue {
       scrollX: false,
       scrollY: false
     },
-    theme: {
-      name: 'myTheme',
-      value: {
-        row: {
-          odd: {
-            background: '#ffffff'
-          }
-        },
-        cell: {
-          focused: {
-            border: ''
-          },
-          focusedInactive: {
-            border: ''
-          },
-          selectedHeader: {
-            background: ''
-          },
-          header: {
-            background: '#eee'
-          },
-          rowHeader: {
-            background: '#eee'
-          }
-        }
-      }
-    }
+    theme: gridThemeConfig
   }
 
   search (): void {
