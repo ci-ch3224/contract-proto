@@ -28,7 +28,7 @@ class ContractTemplateService {
     let qs = ''
     Object.entries(obj).forEach(
       ([key, value]) => {
-        qs += key + '=' + value
+        qs += key + '=' + value + '&'
       }
     )
     return qs
