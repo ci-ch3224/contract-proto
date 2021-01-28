@@ -67,10 +67,11 @@
         </v-row>
         <v-row no-gutters>
           <v-col>
-            <v-text-field
+            <v-textarea
               v-model="contract.contractCondition"
               label="조건"
-            ></v-text-field>
+              rows="3"
+            ></v-textarea>
           </v-col>
         </v-row>
         <v-row no-gutters>

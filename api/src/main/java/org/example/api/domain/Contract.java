@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter
@@ -28,7 +28,7 @@ public class Contract {
     private String subTitle;
 
     @Column(name = "contract_date")
-    private LocalDateTime contractDate;
+    private LocalDate contractDate;
 
     @Column(name = "contract_name")
     private String contractName;
@@ -40,10 +40,10 @@ public class Contract {
     private String contractCondition;
 
     @Column(name = "contract_start_date")
-    private LocalDateTime contractStartDate;
+    private LocalDate contractStartDate;
 
     @Column(name = "contract_end_date")
-    private LocalDateTime contractEndDate;
+    private LocalDate contractEndDate;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "contract_contract_paragraph",
@@ -52,12 +52,12 @@ public class Contract {
     private List<ContractParagraph> bigParagraphs;
 
     @Builder
-    public Contract(long id, String title, String subTitle, long templateId, LocalDateTime contractDate,
+    public Contract(long id, String title, String subTitle, long templateId, LocalDate contractDate,
                     String contractName,
                     String contractAmount,
                     String contractCondition,
-                    LocalDateTime contractStartDate,
-                    LocalDateTime contractEndDate,
+                    LocalDate contractStartDate,
+                    LocalDate contractEndDate,
                     List<ContractParagraph> bigParagraphs) {
         this.id = id;
         this.templateId = templateId;

@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.api.domain.Contract;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.List;
@@ -16,21 +16,33 @@ import java.util.stream.Stream;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class ContractDto {
-    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private long id;
     private long templateId;
     private String title;
     private String subTitle;
     private String contractDate;
+    private String contractName;
+    private String contractAmount;
+    private String contractCondition;
+    private String contractStartDate;
+    private String contractEndDate;
     private List<ContractParagraphDto> bigParagraphs;
 
     @Builder
-    public ContractDto(long id, long templateId, String title, String subTitle, String contractDate, List<ContractParagraphDto> bigParagraphs) {
+    public ContractDto(long id, long templateId, String title, String subTitle, String contractDate,
+                       String contractName, String contractAmount, String contractCondition,
+                       String contractStartDate, String contractEndDate,
+                       List<ContractParagraphDto> bigParagraphs) {
         this.id = id;
         this.templateId = templateId;
         this.title = title;
         this.subTitle = subTitle;
         this.contractDate = contractDate;
+        this.contractName = contractName;
+        this.contractAmount = contractAmount;
+        this.contractCondition = contractCondition;
+        this.contractStartDate = contractStartDate;
+        this.contractEndDate = contractEndDate;
         this.bigParagraphs = bigParagraphs;
     }
 
@@ -40,7 +52,12 @@ public class ContractDto {
                 .title(entity.getTitle())
                 .subTitle(entity.getSubTitle())
                 .templateId(entity.getTemplateId())
-                .contractDate(entity.getContractDate() != null ? entity.getContractDate().format(DATE_TIME_FORMATTER) : null)
+                .contractDate(entity.getContractDate() != null ? entity.getContractDate().format(DateTimeFormatter.ISO_LOCAL_DATE) : null)
+                .contractName(entity.getContractName())
+                .contractAmount(entity.getContractAmount())
+                .contractCondition(entity.getContractCondition())
+                .contractStartDate(entity.getContractStartDate() != null ? entity.getContractStartDate().format(DateTimeFormatter.ISO_LOCAL_DATE) : null)
+                .contractEndDate(entity.getContractEndDate() != null ? entity.getContractEndDate().format(DateTimeFormatter.ISO_LOCAL_DATE) : null)
                 .bigParagraphs(ContractParagraphDto.of(entity.getBigParagraphs()))
                 .build();
     }
@@ -51,7 +68,12 @@ public class ContractDto {
                 .title(this.title)
                 .subTitle(this.subTitle)
                 .templateId(this.templateId)
-                .contractDate(this.contractDate != null ? LocalDateTime.parse(this.contractDate, DATE_TIME_FORMATTER) : null)
+                .contractDate(this.contractDate != null ? LocalDate.parse(this.contractDate, DateTimeFormatter.ISO_LOCAL_DATE) : null)
+                .contractName(this.contractName)
+                .contractAmount(this.contractAmount)
+                .contractCondition(this.contractCondition)
+                .contractStartDate(this.contractStartDate != null ? LocalDate.parse(this.contractStartDate, DateTimeFormatter.ISO_LOCAL_DATE) : null)
+                .contractEndDate(this.contractEndDate != null ? LocalDate.parse(this.contractEndDate, DateTimeFormatter.ISO_LOCAL_DATE) : null)
                 .bigParagraphs(Stream.ofNullable(this.bigParagraphs).flatMap(Collection::stream)
                         .map(dto -> dto.toEntity())
                         .collect(Collectors.toList()))
