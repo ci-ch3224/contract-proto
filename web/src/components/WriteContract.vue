@@ -42,7 +42,7 @@
         <v-stepper-items>
           <!-- 1. 포멧 선택 -->
           <v-stepper-content step="1" class="py-2 px-0">
-            <v-container fluid>
+            <v-container fluid :style="{ height: containerHeight + 'px' }">
               <v-row class="grey lighten-4">
                 <v-col md="3">
                   <v-card>
@@ -56,7 +56,7 @@
                         type="text"
                       ></v-text-field>
                       <v-divider></v-divider>
-                      <v-list class="pa-0 overflow-auto mt-4" style="height: 580px;">
+                      <v-list class="pa-0 overflow-auto mt-4" :style="{ height: containerHeight - 148 + 'px' }">
                         <v-list-item-group
                           color="primary"
                         >
@@ -75,8 +75,8 @@
                     </v-card-text>
                   </v-card>
                 </v-col>
-                <v-col md="9" class="pa-2" style="height: 722px;">
-                  <div v-if="selectedTemplate" style="overflow-y: auto;height: 720px;">
+                <v-col md="9">
+                  <div v-if="selectedTemplate" style="overflow-y: auto;" :style="{ height: containerHeight - 12 + 'px' }">
                     <pdf
                       v-for="i in selectedTemplate.numPages"
                       :key="i"
@@ -88,7 +88,7 @@
                 </v-col>
               </v-row>
             </v-container>
-            <div class="mt-2">
+            <div class="mt-5">
               <v-btn
                 color="primary"
                 @click="step1()"
@@ -176,6 +176,7 @@ import { contractService } from '@/service/ContractService'
 import Base1 from '@/components/contracts/Base1.vue'
 import Base2 from '@/components/contracts/Base2.vue'
 import Base3 from '@/components/contracts/Base3.vue'
+import SignContractor from '@/components/contracts/SignContractor.vue'
 
 interface Template {
   id: number;
@@ -198,6 +199,19 @@ export default class WriteContract extends Vue {
   pdfHref = ''
   pdfSrc?: any = ''
   numPages = 3
+  containerHeight = window.innerHeight - 224
+
+  handleResize () {
+    this.containerHeight = window.innerHeight - 224
+  }
+
+  mounted () {
+    window.addEventListener('resize', this.handleResize)
+  }
+
+  beforeDestroy () {
+    window.removeEventListener('resize', this.handleResize)
+  }
 
   cancel () {
     if (this.e1 > 1) {
