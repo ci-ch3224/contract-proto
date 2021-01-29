@@ -3,8 +3,8 @@
     <v-row>
       <v-col class="md-8 mx-auto text-center">
         <span class="badge badge-primary badge-pill mt-16 mb-4">Feature</span>
-        <h3 id="insight-title" class="my-10">Overview</h3>
-        <p id="insight-title-contents">전자계약을 이용하는 사용자에게 계약서 템플릿 저장 및 관리, 양방향 이동 가능한 전자계약 프로세스를 제공합니다.</p>
+        <h3 class="home-title my-10">Overview</h3>
+        <p class="home-title-contents">전자계약을 이용하는 사용자에게 계약서 템플릿 저장 및 관리, 양방향 이동 가능한 전자계약 프로세스를 제공합니다.</p>
       </v-col>
     </v-row>
     <v-row id="feature-contents" align="center">

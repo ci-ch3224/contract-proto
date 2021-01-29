@@ -3,13 +3,13 @@
     <v-row>
       <v-col class="md-8 mx-auto text-center">
         <span class="badge badge-primary badge-pill mt-16 mb-4">Insight</span>
-        <h3 id="insight-title" class="my-10">{{ lawTitle }}</h3>
-        <p id="insight-title-contents">{{ lawContents }}</p>
+        <h3 class="home-title my-10">{{ lawTitle }}</h3>
+        <p class="home-title-contents">{{ lawContents }}</p>
       </v-col>
     </v-row>
     <v-row id="insight-contents" justify="space-around">
       <v-col id="insight-contents-first" class="ml-12" md="3">
-        <v-icon id="insight-icons" class="my-6">mdi-folder-edit</v-icon>
+        <v-icon class="insight-icons my-6">mdi-folder-edit</v-icon>
         <h4 class="mb-6">{{ signTitle }}</h4>
           <p>{{ signContentsFirst }}</p>
           <p>{{ signContentsSecond }}</p>
@@ -18,7 +18,7 @@
         </a>
       </v-col>
       <v-col id="insight-contents-second" md="3">
-        <v-icon id="insight-icons" class="my-6">mdi-folder-text</v-icon>
+        <v-icon class="insight-icons my-6">mdi-folder-text</v-icon>
         <h4 class="mb-6">{{ documentTitle }}</h4>
           <p>{{ documentContentsFirst }}<p>
            <p>{{ documentContentsSecond }}<br/>{{ documentContentsThird }}</p>
@@ -27,7 +27,7 @@
         </a>
       </v-col>
       <v-col id="insight-contents-third" class="mr-12" md="3">
-        <v-icon id="insight-icons" class="my-6">mdi-handshake</v-icon>
+        <v-icon class="insight-icons my-6">mdi-handshake</v-icon>
         <h4 class="mb-6">{{ contractTitle }}</h4>
           <p>{{ contractContentsFirst }}</p>
         <a :href=contractContentsHref target="_sub">{{ contractContentsLink }}
@@ -83,7 +83,7 @@ export default class Insight extends Vue {
   padding-left: 0.875em
   border-radius: 10rem
 
-#insight-title
+.home-title
   font-family: 'Nanum Square'
   color: #32325d
   font-size: 2.1875rem
@@ -91,7 +91,7 @@ export default class Insight extends Vue {
   font-weight: 600
   line-height: 1.5
 
-#insight-title-contents
+.home-title-contents
   font-family: 'Nanum Gothic'
   letter-spacing: 0.08rem
   color: #5e5f7f
@@ -124,7 +124,7 @@ export default class Insight extends Vue {
   h4
     font-family: 'Nanum Square'
     color: #5e72e4
-  #insight-icons
+  .insight-icons
     color: #2643e9
     box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07)
     background-color: #8a98eb80
@@ -136,7 +136,7 @@ export default class Insight extends Vue {
   h4
     font-family: 'Nanum Square'
     color: #2dce89
-  #insight-icons
+  .insight-icons
     color: #1aae6f
     box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07)
     background-color: #54daa180
@@ -148,7 +148,7 @@ export default class Insight extends Vue {
   h4
     font-family: 'Nanum Square'
     color: #fb6340
-  #insight-icons
+  .insight-icons
     color: #ff3709
     box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07)
     background-color: #fc8c7280
