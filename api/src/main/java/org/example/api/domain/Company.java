@@ -11,21 +11,9 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Entity
+@DiscriminatorValue("company")
 @Table(name = "company")
-public class Company {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-    @Column(name = "code", nullable = false)
-    private String code;
-
-    @Column(name = "name", nullable = false)
-    private String name;
-
-    @Column(name = "address", nullable = false)
-    private String address;
-
+public class Company extends Contractor {
     @Column(name = "representative", nullable = false)
     private String representative;
 }

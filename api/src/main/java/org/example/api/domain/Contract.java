@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Table(name = "contract")
-public class Contract {
+public class Contract extends AuditingEntity                                                                                                                                                                                                                                                                                                                                                                                                                {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
