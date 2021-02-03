@@ -244,13 +244,3 @@ export default class Base2 extends Vue {
 그 외 본 계약서에 명시된 모든 내용을 완벽히 숙지하였으며, 본 근로계약을 자의적으로 체결함을 확인합니다.`
 }
 </script>
-<style>
-#signature {
-  border: double 3px transparent;
-  border-radius: 5px;
-  background-image: linear-gradient(white, white),
-    radial-gradient(circle at top left, #4bc5e8, #9f6274);
-  background-origin: border-box;
-  background-clip: content-box, border-box;
-}
-</style>
