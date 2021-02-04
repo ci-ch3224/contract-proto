@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
-    <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201606072122</property>
+    <property name="createdBy">Eclipse BIRT Designer Version 4.8.0.v201806261756</property>
     <list-property name="propertyBindings">
         <structure>
             <property name="name">queryText</property>
@@ -1938,6 +1938,188 @@ where id = 1]]></xml-property>
   </design:ResultSets>
 </model:DesignValues>]]></xml-property>
         </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="dsSign" id="321">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">id</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">id</text-property>
+                    <text-property name="heading">id</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">contract_id</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">contract_id</text-property>
+                    <text-property name="heading">contract_id</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">contractor_id</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">contractor_id</text-property>
+                    <text-property name="heading">contractor_id</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">sign_image</property>
+                    <property name="analysis">attribute</property>
+                    <text-property name="displayName">sign_image</text-property>
+                    <text-property name="heading">sign_image</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters"/>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">id</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">contract_id</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">contractor_id</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">sign_image</property>
+                        <property name="dataType">blob</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">id</property>
+                    <property name="nativeName">id</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">contract_id</property>
+                    <property name="nativeName">contract_id</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">contractor_id</property>
+                    <property name="nativeName">contractor_id</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">sign_image</property>
+                    <property name="nativeName">sign_image</property>
+                    <property name="dataType">blob</property>
+                    <property name="nativeDataType">-4</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select *
+from sign
+where id = 1]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>id</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>id</design:label>
+            <design:formattingHints>
+              <design:displaySize>19</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>contract_id</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>contract_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>contract_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>19</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>contractor_id</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>contractor_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>contractor_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>19</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>sign_image</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-4</design:nativeDataTypeCode>
+            <design:precision>2147483647</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>sign_image</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>sign_image</design:label>
+            <design:formattingHints>
+              <design:displaySize>2147483647</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
     </data-sets>
     <styles>
         <style name="NewStyle" id="181">
@@ -2231,7 +2413,7 @@ where id = 1]]></xml-property>
                                             <property name="paddingRight">3pt</property>
                                             <property name="verticalAlign">middle</property>
                                             <data id="312">
-                                                <property name="textAlign">left</property>
+                                                <property name="textAlign">center</property>
                                                 <property name="dataSet">dsContract</property>
                                                 <list-property name="boundDataColumns">
                                                     <structure>
@@ -2452,9 +2634,12 @@ where id = 1]]></xml-property>
                                                                 <property name="style">NewStyle</property>
                                                             </structure>
                                                         </list-property>
-                                                        <label id="254">
-                                                            <text-property name="text">(인)</text-property>
-                                                        </label>
+                                                        <image id="330">
+                                                            <property name="height">0.5in</property>
+                                                            <property name="width">0.5666666666666667in</property>
+                                                            <property name="source">file</property>
+                                                            <expression name="uri" type="constant">api/src/main/resources/birt/reports/images/stamp.png</expression>
+                                                        </image>
                                                     </cell>
                                                 </row>
                                             </grid>
@@ -2575,9 +2760,12 @@ where id = 1]]></xml-property>
                                                                 <property name="style">NewStyle1</property>
                                                             </structure>
                                                         </list-property>
-                                                        <label id="259">
-                                                            <text-property name="text">(인)</text-property>
-                                                        </label>
+                                                        <image id="331">
+                                                            <property name="height">0.575in</property>
+                                                            <property name="width">1.1583333333333334in</property>
+                                                            <property name="source">file</property>
+                                                            <expression name="uri" type="constant">api/src/main/resources/birt/reports/images/licensed-image.jpg</expression>
+                                                        </image>
                                                     </cell>
                                                 </row>
                                             </grid>
@@ -2634,6 +2822,8 @@ where id = 1]]></xml-property>
                 </cell>
             </row>
         </grid>
+        <data id="319"/>
+        <image id="320"/>
         <grid id="123">
             <property name="masterPage">Simple MasterPage</property>
             <property name="pageBreakAfter">auto</property>

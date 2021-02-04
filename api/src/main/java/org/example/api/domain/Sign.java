@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.sql.Blob;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -23,6 +24,7 @@ public class Sign {
     @Column(name = "contractor_id", nullable = false)
     private long contractorId;
 
-    @Column(name = "sign_image", nullable = false)
+    @Lob
+    @Column(name = "sign_image", nullable = false, columnDefinition = "LONGTEXT")
     private String signImage;
 }

@@ -35,6 +35,11 @@
           <v-divider></v-divider>
 
           <v-stepper-step step="3">
+            계약자 서명
+          </v-stepper-step>
+          <v-divider></v-divider>
+
+          <v-stepper-step step="4">
             미리보기 및 완료
           </v-stepper-step>
         </v-stepper-header>
@@ -124,8 +129,100 @@
             </div>
           </v-stepper-content>
 
-          <!-- 3. 미리보기 및 완료 -->
-          <v-stepper-content step="3">
+           <!-- 3. 계약자 서명 -->
+          <v-stepper-content step="3" class="py-2 px-0">
+            <v-container fluid :style="{ height: containerHeight + 'px' }">
+              <v-row class="grey lighten-4">
+                <v-col md="3">
+                  <v-card>
+                      <v-stepper
+                        v-model="e6"
+                        vertical
+                        :style="{ height: containerHeight - 12 + 'px' }"
+                        color="purple"
+                      >
+                        <v-stepper-step
+                          :complete="e6 > 1"
+                          step="1"
+                        >
+                          약관 동의
+                        </v-stepper-step>
+
+                        <v-stepper-content step="1">
+                          <v-btn
+                            color="primary"
+                            @click="e6 = 2"
+                          >
+                            동의합니다
+                          </v-btn>
+                        </v-stepper-content>
+
+                        <v-stepper-step
+                          :complete="e6 > 2"
+                          step="2"
+                        >
+                          서명 날인
+                        </v-stepper-step>
+
+                        <v-stepper-content step="2">
+                          <VueSignaturePad
+                            id="signature"
+                            class="my-2"
+                            height="200px"
+                            ref="signaturePad"
+                          />
+                            <!-- :options="options" -->
+                          <v-btn
+                            color="primary"
+                            @click="e6 = 3"
+                          >
+                            확인
+                          </v-btn>
+                        </v-stepper-content>
+
+                        <v-stepper-step
+                          :complete="e6 > 3"
+                          step="3"
+                        >
+                          완료 및 저장
+                        </v-stepper-step>
+
+                        <v-stepper-content step="3">
+                          <v-btn
+                            color="primary"
+                            @click="e1 = 4"
+                          >
+                            확인
+                          </v-btn>
+                        </v-stepper-content>
+                      </v-stepper>
+                  </v-card>
+                </v-col>
+                <v-col md="9">
+                  <div v-if="selectedTemplate" style="overflow-y: auto;" :style="{ height: containerHeight - 12 + 'px' }">
+                    <pdf
+                      v-for="i in selectedTemplate.numPages"
+                      :key="i"
+                      :src="selectedTemplate.src"
+                      :page="i"
+                      class="mb-1"
+                    ></pdf>
+                  </div>
+                </v-col>
+              </v-row>
+            </v-container>
+            <div class="mt-5">
+              <v-btn text @click="cancel()">
+                취소
+              </v-btn>
+              <v-btn text color="primary" :href="pdfHref" target="_blank" download>
+                Download
+              </v-btn>
+            </div>
+          </v-stepper-content>
+
+          <!-- 4. 미리보기 및 완료 -->
+          <v-stepper-content step="4">
             <v-sheet
               color="grey lighten-4"
               height="100%"
@@ -176,7 +273,9 @@ import { contractService } from '@/service/ContractService'
 import Base1 from '@/components/contracts/Base1.vue'
 import Base2 from '@/components/contracts/Base2.vue'
 import Base3 from '@/components/contracts/Base3.vue'
-import SignContractor from '@/components/contracts/SignContractor.vue'
+import VueSignaturePad from 'vue-signature-pad'
+
+Vue.use(VueSignaturePad)
 
 interface Template {
   id: number;
@@ -200,6 +299,7 @@ export default class WriteContract extends Vue {
   pdfSrc?: any = ''
   numPages = 3
   containerHeight = window.innerHeight - 224
+  e6 = 1
 
   handleResize () {
     this.containerHeight = window.innerHeight - 224
@@ -268,3 +368,13 @@ export default class WriteContract extends Vue {
   }
 }
 </script>
+<style lang = "scss">
+#signature {
+  border: double 3px transparent;
+  border-radius: 5px;
+  background-image: linear-gradient(white, #f0f0f0),
+    radial-gradient(circle at top left, #4bc5e8, #9f6274);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+</style>
