@@ -4,6 +4,8 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import org.example.api.domain.Company;
 import org.example.api.domain.Contract;
 
 import java.time.LocalDate;
@@ -27,12 +29,16 @@ public class ContractDto {
     private String contractStartDate;
     private String contractEndDate;
     private List<ContractParagraphDto> bigParagraphs;
+    private Company gap;
+    private Company eul;
 
     @Builder
     public ContractDto(long id, long templateId, String title, String subTitle, String contractDate,
                        String contractName, String contractAmount, String contractCondition,
                        String contractStartDate, String contractEndDate,
-                       List<ContractParagraphDto> bigParagraphs) {
+                       List<ContractParagraphDto> bigParagraphs,
+                       Company gap,
+                       Company eul) {
         this.id = id;
         this.templateId = templateId;
         this.title = title;
@@ -44,6 +50,8 @@ public class ContractDto {
         this.contractStartDate = contractStartDate;
         this.contractEndDate = contractEndDate;
         this.bigParagraphs = bigParagraphs;
+        this.gap = gap;
+        this.eul = eul;
     }
 
     public static ContractDto of(Contract entity) {
@@ -59,6 +67,8 @@ public class ContractDto {
                 .contractStartDate(entity.getContractStartDate() != null ? entity.getContractStartDate().format(DateTimeFormatter.ISO_LOCAL_DATE) : null)
                 .contractEndDate(entity.getContractEndDate() != null ? entity.getContractEndDate().format(DateTimeFormatter.ISO_LOCAL_DATE) : null)
                 .bigParagraphs(ContractParagraphDto.of(entity.getBigParagraphs()))
+                .gap(entity.getGap())
+                .eul(entity.getEul())
                 .build();
     }
 
@@ -77,6 +87,8 @@ public class ContractDto {
                 .bigParagraphs(Stream.ofNullable(this.bigParagraphs).flatMap(Collection::stream)
                         .map(dto -> dto.toEntity())
                         .collect(Collectors.toList()))
+                .gap(this.gap)
+                .eul(this.eul)
                 .build();
     }
 }

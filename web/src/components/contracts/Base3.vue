@@ -58,6 +58,30 @@
           </v-col>
         </v-row>
         <v-row no-gutters>
+          <v-col class="d-flex" cols="12" sm="5">
+            <v-select
+            v-model="gap"
+            :items="companies"
+            item-text="name"
+            :menu-props="{ offsetY: true }"
+            label="갑"
+            return-object
+            ></v-select>
+          </v-col>
+        </v-row>
+        <v-row no-gutters>
+          <v-col cols="12" sm="5">
+            <v-select
+            v-model="eul"
+            :items="companies"
+            item-text="name"
+            :menu-props="{ offsetY: true }"
+            label="을"
+            return-object
+            ></v-select>
+          </v-col>
+        </v-row>
+        <v-row no-gutters>
           <v-col>
             <v-text-field
               v-model="contract.contractAmount"
@@ -215,6 +239,8 @@ import { Component, Vue, Emit } from 'vue-property-decorator'
 import { Editor, Viewer } from '@toast-ui/vue-editor'
 import { ContractParagraph } from '@/model/ContractParagraph'
 import { Contract } from '@/model/Contract'
+import { Company } from '@/model/Company'
+import { companyService } from '@/service/CompanyService'
 
 @Component({
   components: {
@@ -226,6 +252,15 @@ export default class Base3 extends Vue {
   contractStartDateMenu = false
   contractEndDateMenu = false
   contract: Contract = new Contract()
+  companies: Company[] = []
+  gap: Company = new Company()
+  eul: Company = new Company()
+
+  created () {
+    companyService.getAll().then(({ data: responseData }) => {
+      this.companies = responseData
+    })
+  }
 
   addArticle () {
     this.contract.bigParagraphs[1].addParagraphs(new ContractParagraph())
@@ -244,8 +279,9 @@ export default class Base3 extends Vue {
       sp.contents = editor.invoke('getHtml')
       sp.seq = i
     })
-
     this.contract.bigParagraphs[0].contents = (this.$refs.contractContents as Editor).invoke('getHtml')
+    this.contract.gap = this.gap
+    this.contract.eul = this.eul
     return this.contract
   }
 

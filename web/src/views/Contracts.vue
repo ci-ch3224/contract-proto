@@ -24,13 +24,15 @@
     </v-row>
     <v-row>
       <v-col>
-        <grid ref="tuiGrid" :data="gridProps.data" :columns="gridProps.columns" :options="gridProps.options" />
-        <v-pagination
-          v-model="page"
-          :length="6"
-        ></v-pagination>
+        <grid ref="tuiGrid"
+        @click="clickedRow"
+        :data="list" :columns="gridProps.columns"
+        :options="gridProps.options"
+        :theme="gridProps.theme" />
       </v-col>
     </v-row>
+    <pagination ref="pagination" :pageable="pageable" :executeFunction="search">
+    </pagination>
   </v-container>
 </template>
 
@@ -40,18 +42,39 @@ import 'tui-grid/dist/tui-grid.css'
 import { Grid } from '@toast-ui/vue-grid'
 import WriteContract from '@/components/WriteContract.vue'
 import { contractService } from '@/service/ContractService'
+import { Pageable } from '@/model/Pageable'
+import pagination from '@/components/layout/Paginaion.vue'
+import { Contract } from '@/model/Contract'
+import gridThemeConfig from '@/config/tui-grid.theme.ts'
+
+class NameRenderer {
+  el = document.createElement('div')
+  constructor (props: any) {
+    const { grid, rowKey, columnInfo } = props
+
+    this.render(props)
+  }
+
+  getElement () {
+    return this.el
+  }
+
+  render (props: any) {
+    this.el.innerHTML = String(props.value.name)
+  }
+}
 
 @Component({
   components: {
-    Grid, WriteContract
+    Grid, WriteContract, pagination
   }
 })
 export default class Contracts extends Vue {
   dialog = false
-  page = 1
+  list: Contract[] = []
+  pageable: Pageable = new Pageable()
 
   gridProps = {
-    data: [],
     columns: [
       {
         header: '계약서명',
@@ -67,21 +90,32 @@ export default class Contracts extends Vue {
       },
       {
         header: '갑',
-        name: 'gap'
+        name: 'gap',
+        renderer: {
+          type: NameRenderer
+        }
       },
       {
         header: '을',
-        name: 'eul'
+        name: 'eul',
+        renderer: {
+          type: NameRenderer
+        }
       }
     ],
     options: {
-    }
+      scrollX: false,
+      scrollY: false
+    },
+    theme: gridThemeConfig
   }
 
   search (): void {
-    contractService.getAll().then(({ data: list }) => {
+    contractService.getPage(this.pageable).then(({ data: list }) => {
+      debugger
       const grid = (this.$refs.tuiGrid as Grid)
-      grid.invoke('resetData', list)
+      grid.invoke('resetData', list.content)
+      this.pageable.setDataPage(list)
     })
   }
 
@@ -91,6 +125,14 @@ export default class Contracts extends Vue {
 
   created () {
     this.search()
+  }
+
+  clickedRow (ev: any): void {
+    const record = {
+      start: [ev.rowKey, 0],
+      end: [ev.rowKey, ev.instance.getColumns().length]
+    }
+    ev.instance.setSelectionRange(record)
   }
 }
 </script>

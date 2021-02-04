@@ -44,6 +44,14 @@ public class Contract extends AuditingEntity                                    
 
     @Column(name = "contract_end_date")
     private LocalDate contractEndDate;
+    
+    @ManyToOne
+    @JoinColumn(name = "gap")
+    private Company gap;
+
+    @ManyToOne
+    @JoinColumn(name = "eul")
+    private Company eul;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "contract_contract_paragraph",
@@ -58,7 +66,9 @@ public class Contract extends AuditingEntity                                    
                     String contractCondition,
                     LocalDate contractStartDate,
                     LocalDate contractEndDate,
-                    List<ContractParagraph> bigParagraphs) {
+                    List<ContractParagraph> bigParagraphs,
+                    Company gap,
+                    Company eul ) {
         this.id = id;
         this.templateId = templateId;
         this.title = title;
@@ -70,5 +80,7 @@ public class Contract extends AuditingEntity                                    
         this.contractEndDate = contractEndDate;
         this.contractCondition = contractCondition;
         this.bigParagraphs = bigParagraphs;
+        this.gap = gap;
+        this.eul = eul;
     }
 }

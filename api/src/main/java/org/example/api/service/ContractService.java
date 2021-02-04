@@ -3,11 +3,9 @@ package org.example.api.service;
 import org.example.api.domain.Contract;
 import org.example.api.dto.ContractDto;
 import org.example.api.repository.ContractRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 @Service
 public class ContractService {
@@ -23,10 +21,9 @@ public class ContractService {
                 .orElseThrow(RuntimeException::new);
     }
 
-    public List<ContractDto> getContracts() {
-        return StreamSupport.stream(contractRepository.findAll().spliterator(), false)
-                .map(ContractDto::of)
-                .collect(Collectors.toList());
+    public Page<ContractDto> getContracts(Pageable pageable) {
+        return contractRepository.findAll(pageable)
+    			.map(ContractDto::of);
     }
 
     public ContractDto save(ContractDto dto) {

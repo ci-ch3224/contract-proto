@@ -1,5 +1,6 @@
 import { ContractParagraph } from '@/model/ContractParagraph'
 import { ContractTemplate } from '@/model/ContractTemplate'
+import { Company } from '@/model/Company'
 
 export class Contract {
   id?: number = 0
@@ -15,6 +16,8 @@ export class Contract {
   bigParagraphs: ContractParagraph[] = []
   createdBy = ''
   lastModifiedAt = ''
+  gap: Company = null as any
+  eul: Company = null as any
 
   addParagraphs (paragraph: ContractParagraph) {
     this.bigParagraphs.push(paragraph)
