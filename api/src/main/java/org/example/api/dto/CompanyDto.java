@@ -1,5 +1,4 @@
 package org.example.api.dto;
-
 import org.example.api.domain.Company;
 
 import lombok.AccessLevel;

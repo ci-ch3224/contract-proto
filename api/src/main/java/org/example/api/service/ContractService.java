@@ -32,4 +32,5 @@ public class ContractService {
         contractRepository.save(entity);
         return ContractDto.of(entity);
     }
+
 }

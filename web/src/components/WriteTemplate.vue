@@ -138,7 +138,7 @@
               <v-btn text @click="cancel()">
                 취소
               </v-btn>
-              <v-btn text color="lime" :href="pdfHref" target="_blank" download>
+              <v-btn text color="primary" :href="pdfHref" target="_blank" download>
                 Download
               </v-btn>
             </v-footer>

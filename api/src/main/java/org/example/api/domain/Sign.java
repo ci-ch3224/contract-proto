@@ -2,16 +2,16 @@ package org.example.api.domain;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.sql.Blob;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
 @Entity
+@DiscriminatorValue("sign")
 @Table(name = "sign")
 public class Sign {
     @Id
@@ -27,4 +27,12 @@ public class Sign {
     @Lob
     @Column(name = "sign_image", nullable = false, columnDefinition = "LONGTEXT")
     private String signImage;
+
+    @Builder
+    public Sign(long id, long contractId, long contractorId, String signImage) {
+        this.id = id;
+        this.contractId = contractId;
+        this.contractorId = contractorId;
+        this.signImage = signImage;
+    }
 }

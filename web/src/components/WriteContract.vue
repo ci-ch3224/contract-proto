@@ -166,6 +166,7 @@
 
                         <v-stepper-content step="2">
                           <VueSignaturePad
+                            :key="e1 == 3"
                             id="signature"
                             class="my-2"
                             height="200px"
@@ -174,7 +175,7 @@
                             <!-- :options="options" -->
                           <v-btn
                             color="primary"
-                            @click="e6 = 3"
+                            @click="saveSign()"
                           >
                             확인
                           </v-btn>
@@ -268,8 +269,10 @@ import { Editor } from '@toast-ui/vue-editor'
 import pdf from 'vue-pdf'
 import { ContractTemplate } from '@/model/ContractTemplate'
 import { Contract } from '@/model/Contract'
+import { Sign } from '@/model/Sign'
 import { contractTemplateService } from '@/service/ContractTemplateService'
 import { contractService } from '@/service/ContractService'
+import { signService } from '@/service/SignService'
 import Base1 from '@/components/contracts/Base1.vue'
 import Base2 from '@/components/contracts/Base2.vue'
 import Base3 from '@/components/contracts/Base3.vue'
@@ -292,14 +295,33 @@ interface Template {
 })
 export default class WriteContract extends Vue {
   e1 = 1
+  e6 = 1
   selectedComponent = ''
   templateList: Template[] = []
   selectedTemplate: Template = (null as any) as Template
+  deliveredContract: Contract = (null as any) as Contract
   pdfHref = ''
   pdfSrc?: any = ''
   numPages = 3
   containerHeight = window.innerHeight - 224
-  e6 = 1
+
+  saveSign () {
+    const { isEmpty, data } = (this.$refs.signaturePad as any).saveSignature()
+    isEmpty ? alert('draw') : signService.save({
+      contractId: this.deliveredContract.id,
+      contractorId: this.deliveredContract.eul.id,
+      signImage: data.replace(/.*base64,/g, '')
+    }).then(() => {
+      this.e6 = 3
+      this.pdfHref = `http://localhost:8080/report/${this.selectedTemplate.templateName}?output=pdf&contractId=${this.deliveredContract.id}`
+      this.pdfSrc = pdf.createLoadingTask(this.pdfHref)
+      this.pdfSrc.promise.then((a: any) => {
+        this.numPages = a.numPages
+      })
+    }).catch(() => {
+      console.log('error')
+    })
+  }
 
   handleResize () {
     this.containerHeight = window.innerHeight - 224
@@ -353,6 +375,7 @@ export default class WriteContract extends Vue {
   saveContents () {
     const result = (this.$refs.contents as any).getContents()
     contractService.save(result)
+
       .then(({ data: savedContract }) => {
         (this.$refs.contents as any).setContents(savedContract)
         this.e1 = 3
@@ -361,6 +384,7 @@ export default class WriteContract extends Vue {
         this.pdfSrc.promise.then((a: any) => {
           this.numPages = a.numPages
         })
+        this.deliveredContract = savedContract
       })
       .catch(() => {
         console.log('error')
