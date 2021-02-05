@@ -35,12 +35,12 @@
           <v-divider></v-divider>
 
           <v-stepper-step step="3">
-            계약자 서명
+            미리보기 및 완료
           </v-stepper-step>
           <v-divider></v-divider>
 
           <v-stepper-step step="4">
-            미리보기 및 완료
+            계약자 서명
           </v-stepper-step>
         </v-stepper-header>
 
@@ -129,8 +129,41 @@
             </div>
           </v-stepper-content>
 
-           <!-- 3. 계약자 서명 -->
-          <v-stepper-content step="3" class="py-2 px-0">
+          <!-- 3. 미리보기 및 완료 -->
+          <v-stepper-content step="3">
+            <v-sheet
+              color="grey lighten-4"
+              height="100%"
+              class="d-flex justify-center"
+            >
+              <div style="width:70%;background-color: white;">
+                <pdf
+                  v-for="i in numPages"
+                  :key="i"
+                  :src="pdfSrc"
+                  :page="i"
+                ></pdf>
+              </div>
+            </v-sheet>
+            <div class="mt-2">
+              <v-btn
+                color="primary"
+                @click="e1 = 4"
+              >
+                완료
+              </v-btn>
+
+              <v-btn text @click="cancel()">
+                취소
+              </v-btn>
+              <v-btn text color="lime" :href="pdfHref" target="_blank" download>
+                Download
+              </v-btn>
+            </div>
+          </v-stepper-content>
+
+          <!-- 4. 계약자 서명 -->
+          <v-stepper-content step="4" class="py-2 px-0">
             <v-container fluid :style="{ height: containerHeight + 'px' }">
               <v-row class="grey lighten-4">
                 <v-col md="3">
@@ -191,7 +224,7 @@
                         <v-stepper-content step="3">
                           <v-btn
                             color="primary"
-                            @click="e1 = 4"
+                            @click="$emit('close-dialog')"
                           >
                             확인
                           </v-btn>
@@ -217,39 +250,6 @@
                 취소
               </v-btn>
               <v-btn text color="primary" :href="pdfHref" target="_blank" download>
-                Download
-              </v-btn>
-            </div>
-          </v-stepper-content>
-
-          <!-- 4. 미리보기 및 완료 -->
-          <v-stepper-content step="4">
-            <v-sheet
-              color="grey lighten-4"
-              height="100%"
-              class="d-flex justify-center"
-            >
-              <div style="width:70%;background-color: white;">
-                <pdf
-                  v-for="i in numPages"
-                  :key="i"
-                  :src="pdfSrc"
-                  :page="i"
-                ></pdf>
-              </div>
-            </v-sheet>
-            <div class="mt-2">
-              <v-btn
-                color="primary"
-                @click="e1 = 1"
-              >
-                완료
-              </v-btn>
-
-              <v-btn text @click="cancel()">
-                취소
-              </v-btn>
-              <v-btn text color="lime" :href="pdfHref" target="_blank" download>
                 Download
               </v-btn>
             </div>
